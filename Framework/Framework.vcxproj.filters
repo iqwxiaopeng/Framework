@@ -16,22 +16,19 @@
     <Filter Include="Misc">
       <UniqueIdentifier>{426a567c-07d8-4a2a-9cb8-33cbb48faac5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Animations">
-      <UniqueIdentifier>{60f338ca-7fb0-428d-9fa1-b1dfddaa4cd3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Windows">
       <UniqueIdentifier>{42e11d78-4d7f-4b9a-adfa-924238b6dfce}</UniqueIdentifier>
     </Filter>
     <Filter Include="Misc\VS-files">
       <UniqueIdentifier>{cc3ca0b3-aa88-4942-b3d1-c6cce4836355}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{5b18c627-f3bd-488b-9fb6-6661b1f6f9d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="E:\Programowanie\C++\temp\SG\SG\Animation.h">
-      <Filter>Animations</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Windows</Filter>
@@ -42,16 +39,19 @@
     <ClInclude Include="EmptyWindow.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="E:\Programowanie\C++\temp\SG\SG\Animation.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Misc\VS-files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
