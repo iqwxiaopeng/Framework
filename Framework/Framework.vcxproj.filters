@@ -25,6 +25,15 @@
     <Filter Include="Animation">
       <UniqueIdentifier>{5b18c627-f3bd-488b-9fb6-6661b1f6f9d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{7e3a9388-2aa0-4de1-8b85-cf1191310ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tasks">
+      <UniqueIdentifier>{01bca58e-31d9-4b4c-bcab-b4ad13dabf12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{e3dc0d01-b08b-445e-ab57-9490c043b0d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -42,6 +51,21 @@
     <ClInclude Include="Animation.h">
       <Filter>Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="EventsMgr.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesMgr.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="TasksMgr.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -52,6 +76,18 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="EventsMgr.cpp">
+      <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcesMgr.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TasksMgr.cpp">
+      <Filter>Tasks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
