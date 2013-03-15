@@ -39,6 +39,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Misc\VS-files</Filter>
     </ClInclude>
+    <ClInclude Include="EmptyWindow.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="E:\Programowanie\C++\temp\SG\SG\Animation.cpp">
