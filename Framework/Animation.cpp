@@ -2,7 +2,7 @@
 #include "Animation.h"
 
 Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
-	base(img),
+	Displayable(*img),
 	frameCountX(_frameCountX),
 	frameCountY(_frameCountY),
 	frameCount(_frameCountX*_frameCountY),
@@ -15,7 +15,7 @@ Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) :
 
 Animation::Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight)
 	: 
-	image(img),
+	Displayable(*img),
 	frameCountX(_frameCountX),
 	frameCountY(_frameCountY),
 	frameCount(_frameCountX*_frameCountY),
@@ -81,19 +81,19 @@ void Animation::SetFrameBounds()
 {
 	int frameX = currentFrame % frameCountX;
 	int frameY = currentFrame / frameCountX;
-	image->sprite->setTextureRect(sf::IntRect( (frameWidth+spaceX) * frameX,(frameHeight+spaceY) * frameY,frameWidth,frameHeight)); //can be deleted, not sure.
+	sprite->setTextureRect(sf::IntRect( (frameWidth+spaceX) * frameX,(frameHeight+spaceY) * frameY,frameWidth,frameHeight)); //can be deleted, not sure.
 }
 
 void Animation::Render(sf::RenderWindow *pRW)
 {
-	pRW->draw(*image->sprite);
+	pRW->draw(*sprite);
 }
 
 void Animation::SetPosition(int _x,int _y)
 {
-	image->x = _x;
-	image->y = _y;
-	image->sprite->setPosition(_x,_y);
+	x = _x;
+	y = _y;
+	sprite->setPosition(_x,_y);
 }
 
 void Animation::SetFrameSize(int width,int height)
