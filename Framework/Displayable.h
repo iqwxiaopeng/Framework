@@ -8,4 +8,9 @@ class Displayable
 		Displayable(sf::Sprite *);
 		int x, y;
 		sf::Sprite *sprite;
+
+		virtual void draw(sf::RenderWindow* pRW)
+		{
+
+		}
 };
