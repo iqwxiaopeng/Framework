@@ -5,42 +5,42 @@
 
 class Animation : public Displayable
 {
-public :
-	Animation(Displayable *img,int _frameCountX,int _frameCountY);
-	Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight);
+public:
+	Animation(Displayable *img, int _frameCountX, int _frameCountY);
+	Animation(Displayable *img, int _frameCountX, int _frameCountY, int _frameWidth, int _frameHeight);
 	virtual ~Animation();
 	//Starts animation functions
 	//Start Animation with current AnimationTime
-	void Start();
+	void start();
 	//Starts Animation and sets AnimationTime
-	void Start(int); 
+	void start(int); 
 	//Arg1 - AnimationTime
 	//Arg2 - from which frame does animation start
-	void Start(int,int); 
+	void start(int,int); 
 
-	void Stop(); //Return to 0 frame.
-	void SetAnimationTime(int);
-	void SetAnimationFrame(int);
-	void SetPosition(int,int);
-	void SetFrameSize(int,int);
+	void stop(); //Return to 0 frame.
+	void setAnimationTime(int);
+	void setAnimationFrame(int);
+	void setPosition(int, int);
+	void setFrameSize(int, int);
 	//set spaces between frames.
-	void SetSpaces(int,int);
+	void setSpaces(int, int);
 	//Pause/Unpause animation. Returns the actual state of Pausing
-	bool Pause();
+	bool pause();
 
 	//Frame time is now ignored.
-	void Tick(float frameTime);
-	void Render(sf::RenderWindow *pRW);
+	void tick(float frameTime);
+	void render(sf::RenderWindow *pRW);
 
-	bool pause;
+	bool paused;
 
 protected:
-	int frameWidth,frameHeight;
-	int frameCountX,frameCountY,frameCount;
-	int animationTime,currentTime,timePerFrame,currentFrame;
-	int spaceX,spaceY;
+	int frameWidth, frameHeight;
+	int frameCountX, frameCountY, frameCount;
+	int animationTime, currentTime, timePerFrame, currentFrame;
+	int spaceX, spaceY;
 
-	void SetFrameBounds();
+	void setFrameBounds();
 
 private:
 };

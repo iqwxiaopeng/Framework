@@ -5,42 +5,42 @@ ParticleMaster::ParticleMaster()
 {
 }
 
-void ParticleMaster::Add(Particle *part)
+void ParticleMaster::add(Particle *part)
 {
 	particles.push_back(part);
 }
 
-void ParticleMaster::Delete(int index)
+void ParticleMaster::remove(int index)
 {
 	delete particles[index];
 	particles[index] = particles[particles.size()-1];
 	particles.pop_back();
 }
 
-void ParticleMaster::Delete(Particle *wut)
+void ParticleMaster::remove(Particle *wut)
 {
 	for(int i = 0;i < particles.size();i++)
 		if(particles[i] == wut)
 		{
-			Delete(i);
+			remove(i);
 			return;
 		}
 }
 
-void ParticleMaster::Step()
+void ParticleMaster::step()
 {
 	for(int i = 0;i < particles.size();i++)
 	{
-		particles[i]->Step();
-		if(particles[i]->End())
-		Delete(i);
+		particles[i]->step();
+		if(particles[i]->end())
+			remove(i);
 	}
 }
 
-void ParticleMaster::Render(sf::RenderWindow *pRW)
+void ParticleMaster::render(sf::RenderWindow *pRW)
 {
 	for(int i = 0; i < particles.size();i++)
 	{
-		particles[i]->Render(pRW);
+		particles[i]->render(pRW);
 	}
 }

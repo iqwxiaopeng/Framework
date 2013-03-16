@@ -8,12 +8,12 @@ Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) :
 	frameCount(_frameCountX*_frameCountY),
 	spaceX(0),
 	spaceY(0),
-	pause(true),
+	paused(true),
 	animationTime(0)
 {
 }
 
-Animation::Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight)
+Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY, int _frameWidth, int _frameHeight)
 	: 
 	Displayable(*img),
 	frameCountX(_frameCountX),
@@ -21,7 +21,7 @@ Animation::Animation(Displayable *img,int _frameCountX,int _frameCountY,int _fra
 	frameCount(_frameCountX*_frameCountY),
 	spaceX(0),
 	spaceY(0),
-	pause(true),
+	paused(true),
 	animationTime(0),
 	frameWidth(_frameWidth),
 	frameHeight(_frameHeight)
@@ -29,74 +29,75 @@ Animation::Animation(Displayable *img,int _frameCountX,int _frameCountY,int _fra
 }
 
 
-void Animation::SetAnimationTime(int time)
+void Animation::setAnimationTime(int time)
 {
 	animationTime = time;
 	timePerFrame = animationTime / frameCount;
 }
 
-void Animation::Start()
+void Animation::start()
 {
 	if(animationTime == 0)
 		return;
 	currentTime = 0;
-	pause = false;
+	paused = false;
 }
 
-void Animation::Start(int time)
+void Animation::start(int time)
 {
-	SetAnimationTime(time);
+	setAnimationTime(time);
 	currentTime = 0;
-	pause = false;
+	paused = false;
 }
-void Animation::Start(int time,int frame)
+void Animation::start(int time, int frame)
 {
-	SetAnimationTime(time);
-	SetAnimationFrame(frame);
-	pause = false;
+	setAnimationTime(time);
+	setAnimationFrame(frame);
+	paused = false;
 }
 
-void Animation::SetAnimationFrame(int frame)
+void Animation::setAnimationFrame(int frame)
 {
 	currentTime = timePerFrame * frame;
 	currentFrame = frame;
 }
 
-bool Animation::Pause()
+bool Animation::pause()
 {
-	pause=pause?false:true;
-	return pause;
+	paused = !paused;
+	return paused;
 }
 
-void Animation::Tick(float frameTime)
+void Animation::tick(float frameTime)
 {
-	if(pause)return;
+	if(paused) 
+		return;
 	currentTime++;
 	currentFrame = currentTime / timePerFrame;
 	currentTime %= animationTime;
-	SetFrameBounds();
+	setFrameBounds();
 }
 
-void Animation::SetFrameBounds()
+void Animation::setFrameBounds()
 {
 	int frameX = currentFrame % frameCountX;
 	int frameY = currentFrame / frameCountX;
 	sprite->setTextureRect(sf::IntRect( (frameWidth+spaceX) * frameX,(frameHeight+spaceY) * frameY,frameWidth,frameHeight)); //can be deleted, not sure.
 }
 
-void Animation::Render(sf::RenderWindow *pRW)
+void Animation::render(sf::RenderWindow *pRW)
 {
 	pRW->draw(*sprite);
 }
 
-void Animation::SetPosition(int _x,int _y)
+void Animation::setPosition(int _x, int _y)
 {
 	x = _x;
 	y = _y;
 	sprite->setPosition(_x,_y);
 }
 
-void Animation::SetFrameSize(int width,int height)
+void Animation::setFrameSize(int width, int height)
 {
 	frameHeight = height;
 	frameWidth = width;

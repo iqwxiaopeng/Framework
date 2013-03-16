@@ -11,6 +11,6 @@ class Displayable
 
 		virtual void draw(sf::RenderWindow* pRW)
 		{
-
+			pRW->draw(*sprite);
 		}
 };

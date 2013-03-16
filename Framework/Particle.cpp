@@ -10,7 +10,7 @@ Particle::~Particle()
 		delete states[i];
 }
 
-void Particle::AddState(ParticleState *state)
+void Particle::addState(ParticleState *state)
 {
 	if(stage == -1)
 	{
@@ -25,7 +25,7 @@ void Particle::AddState(ParticleState *state)
 	}
 	states.push_back(state);
 }
-bool Particle::End()
+bool Particle::end()
 {
 	if(stage == states.size() - 2 
 		&& currentTime == states[stage+1]->t)
@@ -33,9 +33,9 @@ bool Particle::End()
 	return false;
 }
 
-bool Particle::SwitchStage()
+bool Particle::switchStage()
 {
-	if(End())return false;
+	if(end())return false;
 	if(currentTime == states[stage+1]->t)
 	{//Time for next state
 		stage++;
@@ -46,10 +46,10 @@ bool Particle::SwitchStage()
 	return false;
 }
 
-void Particle::Step()
+void Particle::step()
 {
 	if(currentTime == states[stage+1]->t)
-		if(!SwitchStage()) return; //End of animation
+		if(!switchStage()) return; //End of animation
 	currentState += *changeState;
 	image->sprite->setPosition(currentState.x,currentState.y);
 	image->sprite->setScale(currentState.scale,currentState.scale);
@@ -58,12 +58,12 @@ void Particle::Step()
 	currentTime++;
 }
 
-void Particle::Render(sf::RenderWindow *pRW)
+void Particle::render(sf::RenderWindow *pRW)
 {
 	pRW->draw(*image->sprite);
 }
 
-ParticleState ParticleState::Lerp(ParticleState &first,ParticleState &second,float amount)
+ParticleState ParticleState::lerp(ParticleState &first,ParticleState &second,float amount)
 {
 	ParticleState ret;
 	ret.x =  first.x + (second.x - first.x) * amount;
@@ -78,7 +78,7 @@ ParticleState ParticleState::Lerp(ParticleState &first,ParticleState &second,flo
 	return ret;
 }
 
-void Particle::SetStates(std::vector<ParticleState*> _states)
+void Particle::setStates(std::vector<ParticleState*> _states)
 {
 	 states = _states;
 	 if(states.size() >= 1)

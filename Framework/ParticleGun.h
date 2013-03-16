@@ -4,40 +4,41 @@
 #include "Particle.h"
 #include "ParticleMaster.h"
 #include "TasksMgr.h"
+
 //help struct
 struct ParticleLink
 {
 	ParticleLink(ParticleState &first,ParticleState &second) 
-		:min(first),max(second)
+		: min(first), max(second)
 	{
 	}
-		ParticleState min,max;
+		ParticleState min, max;
 };
 
 class ParticleGun
 {
-public :
+public:
 	ParticleGun(Displayable disp);
 
 	//Chain
-	void AddParticleLink(ParticleLink&);
-	void AddParticleLink(ParticleState &first,ParticleState &second);
+	void addParticleLink(ParticleLink&);
+	void addParticleLink(ParticleState &first, ParticleState &second);
 
 	//Params
-	void SetParameters(int _amount,int _interval);
+	void setParameters(int _amount, int _interval);
 
 	//Work
-	void Step(ParticleMaster *pM);
+	void step(ParticleMaster *pM);
 
 	//Death
-	void SetDeathTime(TasksMgr *taskMgr,float time);
-	void Death();
+	void setDeathTime(TasksMgr *taskMgr, float time);
+	void death();
 
 
-protected :
+protected:
 	Displayable image;
 	std::vector<ParticleLink> particleChain;
-	int amount,interval,currentTime;  // <amount> defines amount of particles created per <interval>
+	int amount, interval, currentTime;  // <amount> defines amount of particles created per <interval>
 	TaskData *deathTask;
 	bool isDead;
 	

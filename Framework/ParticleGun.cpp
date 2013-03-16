@@ -10,19 +10,19 @@ ParticleGun::ParticleGun(Displayable disp) :
 }
 
 
-void ParticleGun::AddParticleLink(ParticleLink &link)
+void ParticleGun::addParticleLink(ParticleLink &link)
 {
 	particleChain.push_back(link);
 }
 
 
-void ParticleGun::AddParticleLink(ParticleState &first,ParticleState &second)
+void ParticleGun::addParticleLink(ParticleState &first,ParticleState &second)
 {
 	particleChain.push_back(ParticleLink(first,second));
 }
 
 
-void ParticleGun::SetParameters(int _amount,int _interval)
+void ParticleGun::setParameters(int _amount,int _interval)
 {
 	amount = _amount;
 	interval = _interval;
@@ -30,7 +30,7 @@ void ParticleGun::SetParameters(int _amount,int _interval)
 }
 
 
-void ParticleGun::Step(ParticleMaster *pM)
+void ParticleGun::step(ParticleMaster *pM)
 {
 	if(isDead) return; //it's dead so no action.
 	if(interval == currentTime)
@@ -45,24 +45,24 @@ void ParticleGun::Step(ParticleMaster *pM)
 				float value = (float)(utils::GetRandom() % 100) / 100.f;
 
 				ParticleState *nowy = new ParticleState(
-					ParticleState::Lerp(particleChain[x].min,particleChain[x].max,value));
+					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
 				states[x] = nowy;
 			}
 			
 			Particle *particle = new Particle(new Displayable(image));
-			particle->SetStates(states);
-			pM->Add(particle);
+			particle->setStates(states);
+			pM->add(particle);
 			currentTime=0;
 		}
 	currentTime++;
 }
 
-void ParticleGun::SetDeathTime(TasksMgr *taskMgr,float time)
+void ParticleGun::setDeathTime(TasksMgr *taskMgr,float time)
 {
-	deathTask = taskMgr->registerTask(std::bind(&ParticleGun::Death,this),time);
+	deathTask = taskMgr->registerTask(std::bind(&ParticleGun::death,this),time);
 }
 
-void ParticleGun::Death()
+void ParticleGun::death()
 {
 	isDead = true;
 }
