@@ -16,5 +16,4 @@ public :
 protected :
 	std::vector<Particle*> particles;
 private :
-
-}
+};
