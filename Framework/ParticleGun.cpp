@@ -33,9 +33,10 @@ void ParticleGun::Step(ParticleMaster *pM)
 			(particleChain.size(),nullptr);
 		for(int x = 0;x < particleChain.size();x++)
 		{
-			
+			float value = (float)(utils::GetRandom() % 100) / 100.f;
+
 			ParticleState *nowy = new ParticleState(
-				(particleChain[x].min.x + particleChain[x].min.y) / 2
+				ParticleState::Lerp(particleChain[x].min,particleChain[x].max,value));
 		}
 	}
 }
