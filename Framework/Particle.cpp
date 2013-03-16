@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Particle.h"
 
+Particle::Particle(Displayable *img) : image(img),stage(-1),currentTime(-1)
+{
+}
 
 Particle::~Particle()
 {

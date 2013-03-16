@@ -27,7 +27,7 @@ struct ParticleState
 class Particle
 {
 public :
-	Particle();
+	Particle(Displayable *);
 	~Particle();
 	void AddState(ParticleState *);
 	void Step();
@@ -38,7 +38,7 @@ public :
 	//in the same way from t=0
 
 protected :
-	Displayable image;
+	Displayable *image;
 	std::vector<ParticleState *> states;
 	ParticleState currentState,*changeState;
 	int stage; // refers to current stance
