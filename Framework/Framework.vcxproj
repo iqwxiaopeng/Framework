@@ -93,7 +93,6 @@
     <ClInclude Include="Displayable.h" />
     <ClInclude Include="EmptyWindow.h" />
     <ClInclude Include="Event.h" />
-    <ClInclude Include="Events.h" />
     <ClInclude Include="EventsMgr.h" />
     <ClInclude Include="ResourcesMgr.h" />
     <ClInclude Include="stdafx.h" />

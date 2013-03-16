@@ -57,9 +57,6 @@
     <ClInclude Include="Event.h">
       <Filter>Events</Filter>
     </ClInclude>
-    <ClInclude Include="Events.h">
-      <Filter>Events</Filter>
-    </ClInclude>
     <ClInclude Include="EventsMgr.h">
       <Filter>Events</Filter>
     </ClInclude>
