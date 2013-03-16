@@ -18,6 +18,8 @@ struct ParticleState
 	ParticleState operator -=(ParticleState &rhp);
 	ParticleState operator /= (float rhp);
 	ParticleState operator /(float rhp);
+
+	static ParticleState Lerp(ParticleState &first,ParticleState &second,float amount);
 	operator sf::Color();
 	//inverts all values.
 	ParticleState operator !();

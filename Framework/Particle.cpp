@@ -63,3 +63,18 @@ void Particle::Render(sf::RenderWindow *pRW)
 {
 	pRW->draw(*image->sprite);
 }
+
+ParticleState ParticleState::Lerp(ParticleState &first,ParticleState &second,float amount)
+{
+	ParticleState ret;
+	ret.x =  first.x + (second.x - first.x) * amount;
+	ret.y =  first.x + (second.x - first.x) * amount;
+	ret.r =  first.r + (second.r - first.r) * amount;
+	ret.g =  first.g + (second.g - first.g) * amount;
+	ret.b =  first.b + (second.b - first.b) * amount;
+	ret.a =  first.a + (second.a - first.a) * amount;
+	ret.rotation =  first.rotation + (second.rotation - first.rotation) * amount;
+	ret.scale =  first.scale + (second.scale - first.scale) * amount;
+	ret.t =  first.t + (second.t - first.t) * amount;
+	return ret;
+}
