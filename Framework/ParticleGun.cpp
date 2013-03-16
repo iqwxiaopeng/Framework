@@ -40,12 +40,14 @@ void ParticleGun::step(ParticleMaster *pM)
 			std::vector<ParticleState *>states = std::vector<ParticleState*>
 				(particleChain.size(),nullptr);
 			
-			for(int x = 0;x < particleChain.size();x++)
+			for(unsigned int x = 0;x < particleChain.size();x++)
 			{
 				float value = (float)(utils::GetRandom() % 100) / 100.f;
 
 				ParticleState *nowy = new ParticleState(
 					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
+				nowy->x += x;
+				nowy->y += y;
 				states[x] = nowy;
 			}
 			
@@ -55,6 +57,12 @@ void ParticleGun::step(ParticleMaster *pM)
 			currentTime=0;
 		}
 	currentTime++;
+}
+
+void ParticleGun::setPosition(float _x,float _y)
+{
+	x = _x;
+	y = _y;
 }
 
 void ParticleGun::setDeathTime(TasksMgr *taskMgr,float time)

@@ -6,7 +6,7 @@ Particle::Particle(Displayable *img) : image(img),stage(-1),currentTime(-1)
 
 Particle::~Particle()
 {
-	for(int i = 0;i < states.size();i++)
+	for(unsigned int i = 0;i < states.size();i++)
 		delete states[i];
 }
 
@@ -21,13 +21,13 @@ void Particle::addState(ParticleState *state)
 	else if(stage == 0 && changeState == NULL)
 	{
 		changeState = new ParticleState();
-		*changeState = (*state - *states[0]) / state->t;
+		*changeState = (*state - *states[0]) / (float)state->t;
 	}
 	states.push_back(state);
 }
 bool Particle::end()
 {
-	if(stage == states.size() - 2 
+	if(stage == (int)states.size() - 2 
 		&& currentTime == states[stage+1]->t)
 		return true;
 	return false;
@@ -40,7 +40,7 @@ bool Particle::switchStage()
 	{//Time for next state
 		stage++;
 		currentState = *states[stage];
-		*changeState = (*states[stage+1] - *states[stage])/ (states[stage+1]->t - states[stage]->t);
+		*changeState = (*states[stage+1] - *states[stage])/ (float)(states[stage+1]->t - states[stage]->t);
 		return true;
 	}
 	return false;
@@ -74,7 +74,7 @@ ParticleState ParticleState::lerp(ParticleState &first,ParticleState &second,flo
 	ret.a =  first.a + (second.a - first.a) * amount;
 	ret.rotation =  first.rotation + (second.rotation - first.rotation) * amount;
 	ret.scale =  first.scale + (second.scale - first.scale) * amount;
-	ret.t =  first.t + (second.t - first.t) * amount;
+	ret.t = (int)(first.t + (second.t - first.t) * amount);
 	return ret;
 }
 
@@ -90,6 +90,6 @@ void Particle::setStates(std::vector<ParticleState*> _states)
 	if(states.size() >= 2)
 	{
 		changeState = new ParticleState();
-		*changeState = (*states[1] - *states[0]) / states[1]->t;
+		*changeState = (*states[1] - *states[0]) / (float)states[1]->t;
 	}
 }

@@ -19,7 +19,7 @@ void ParticleMaster::remove(int index)
 
 void ParticleMaster::remove(Particle *wut)
 {
-	for(int i = 0;i < particles.size();i++)
+	for(unsigned int i = 0;i < particles.size();i++)
 		if(particles[i] == wut)
 		{
 			remove(i);
@@ -29,7 +29,7 @@ void ParticleMaster::remove(Particle *wut)
 
 void ParticleMaster::step()
 {
-	for(int i = 0;i < particles.size();i++)
+	for(unsigned int i = 0;i < particles.size();i++)
 	{
 		particles[i]->step();
 		if(particles[i]->end())
@@ -39,7 +39,7 @@ void ParticleMaster::step()
 
 void ParticleMaster::render(sf::RenderWindow *pRW)
 {
-	for(int i = 0; i < particles.size();i++)
+	for(unsigned int i = 0; i < particles.size();i++)
 	{
 		particles[i]->render(pRW);
 	}

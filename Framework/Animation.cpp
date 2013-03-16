@@ -68,7 +68,7 @@ bool Animation::pause()
 	return paused;
 }
 
-void Animation::tick(float frameTime)
+void Animation::tick()
 {
 	if(paused) 
 		return;
@@ -94,7 +94,7 @@ void Animation::setPosition(int _x, int _y)
 {
 	x = _x;
 	y = _y;
-	sprite->setPosition(_x,_y);
+	sprite->setPosition((float)_x,(float)_y);
 }
 
 void Animation::setFrameSize(int width, int height)

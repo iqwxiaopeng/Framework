@@ -29,7 +29,7 @@ public:
 	bool pause();
 
 	//Frame time is now ignored.
-	void tick(float frameTime);
+	void tick();
 	void render(sf::RenderWindow *pRW);
 
 	bool paused;

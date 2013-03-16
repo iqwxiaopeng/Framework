@@ -30,12 +30,16 @@ public:
 	//Work
 	void step(ParticleMaster *pM);
 
+	//Position
+	void setPosition(float x,float y);
+
 	//Death
 	void setDeathTime(TasksMgr *taskMgr, float time);
 	void death();
 
 
 protected:
+	float x,y; // Position where gun is located
 	Displayable image;
 	std::vector<ParticleLink> particleChain;
 	int amount, interval, currentTime;  // <amount> defines amount of particles created per <interval>

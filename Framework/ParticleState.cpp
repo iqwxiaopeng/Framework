@@ -11,7 +11,7 @@ ParticleState::ParticleState() :
 }
 ParticleState::ParticleState(sf::Color _color,int _x,int _y,float _rotation,float _scale,int _t):
 	r(_color.r),g(_color.g),b(_color.b),a(_color.a),
-	x(_x),y(_y),
+	x((float)_x),y((float)_y),
 	rotation(_rotation),
 	scale(_scale),
 	t(_t)
