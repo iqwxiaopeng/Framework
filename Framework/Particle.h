@@ -5,13 +5,13 @@
 struct ParticleState
 {
 	float r,g,b,a;
-	int x,y;
+	float x,y;
 	float rotation;
 	float scale;
 	int t;// Refers to tick time when ParticleStates switches;
 
 	ParticleState();
-	ParticleState(sf::Color &,int _x,int _y,float &_rotation,float &_scale,int &_t);
+	ParticleState(sf::Color ,int _x,int _y,float _rotation,float _scale,int _t);
 	ParticleState operator +(ParticleState &rhp);
 	ParticleState operator += (ParticleState &rhp);
 	ParticleState operator -(ParticleState &rhp);
@@ -30,8 +30,8 @@ public :
 	Particle(Displayable *);
 	~Particle();
 	void AddState(ParticleState *);
-	void Step();
-	void Render(sf::RenderWindow*);
+	virtual void Step();
+	virtual void Render(sf::RenderWindow*);
 	bool End(); //return true if particle completed all states;
 
 	Particle* Copy(); //Copy the contents to create next particle that will behaviour
