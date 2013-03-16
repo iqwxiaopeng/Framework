@@ -5,6 +5,7 @@
 class Displayable
 {
 	public:
+		Displayable(sf::Sprite *);
 		int x, y;
 		sf::Sprite *sprite;
 };

@@ -3,7 +3,7 @@
 #include <SFML\Graphics.hpp>
 
 
-class Animation
+class Animation : public Displayable
 {
 public :
 	Animation(Displayable *img,int _frameCountX,int _frameCountY);
@@ -34,7 +34,6 @@ public :
 	bool pause;
 
 protected:
-	Displayable *image;
 	int frameWidth,frameHeight;
 	int frameCountX,frameCountY,frameCount;
 	int animationTime,currentTime,timePerFrame,currentFrame;

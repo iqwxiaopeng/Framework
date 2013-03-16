@@ -2,7 +2,7 @@
 #include "Animation.h"
 
 Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
-	image(img),
+	base(img),
 	frameCountX(_frameCountX),
 	frameCountY(_frameCountY),
 	frameCount(_frameCountX*_frameCountY),
