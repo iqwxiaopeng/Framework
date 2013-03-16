@@ -113,6 +113,8 @@
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventsMgr.cpp" />
     <ClCompile Include="FileMgr.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleState.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
