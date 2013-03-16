@@ -1,6 +1,19 @@
 #include "stdafx.h"
 #include "Animation.h"
 
+#include "Displayable.h"
+
+Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
+	image(img),
+	frameCountX(_frameCountX),
+	frameCountY(_frameCountY),
+	frameCount(_frameCountX*_frameCountY),
+	spaceX(0),
+	spaceY(0),
+	pause(true),
+	animationTime(0)
+{
+}
 
 void Animation::SetAnimationTime(int time)
 {
