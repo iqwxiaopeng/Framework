@@ -28,7 +28,6 @@ void ParticleMaster::Delete(Particle *wut)
 
 void ParticleMaster::Step()
 {
-	if(pause)return;
 	for(int i = 0;i < particles.size();i++)
 	{
 		particles[i]->Step();

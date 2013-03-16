@@ -146,6 +146,9 @@
     <ClCompile Include="ParticleGun.cpp">
       <Filter>Graphics\Particle</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleMaster.cpp">
+      <Filter>Graphics\Particle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">

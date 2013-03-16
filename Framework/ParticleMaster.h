@@ -11,8 +11,6 @@ public :
 
 	void Step();
 	void Render(sf::RenderWindow *pRW);
-
-	bool pause; //pauses the Step()
 protected :
 	std::vector<Particle*> particles;
 private :
