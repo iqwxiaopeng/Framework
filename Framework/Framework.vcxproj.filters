@@ -96,6 +96,9 @@
     <ClInclude Include="Value.h">
       <Filter>Files\Config</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleGun.h">
+      <Filter>Graphics\Particle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -132,6 +135,9 @@
       <Filter>Graphics\Particle</Filter>
     </ClCompile>
     <ClCompile Include="ParticleState.cpp">
+      <Filter>Graphics\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleGun.cpp">
       <Filter>Graphics\Particle</Filter>
     </ClCompile>
   </ItemGroup>
