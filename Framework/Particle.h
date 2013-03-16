@@ -28,7 +28,7 @@ class Particle
 {
 public :
 	Particle(Displayable *);
-	~Particle();
+	virtual ~Particle();
 	void AddState(ParticleState *);
 	virtual void Step();
 	virtual void Render(sf::RenderWindow*);

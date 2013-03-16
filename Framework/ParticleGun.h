@@ -18,11 +18,6 @@ class ParticleGun
 {
 public :
 	ParticleGun();
-	ParticleGun(float x,float y,float width,float height);
-	ParticleGun(sf::FloatRect&);
-	
-	//start Rect
-	void SetRectangle(sf::FloatRect );
 
 	//Chain
 	void AddParticleLink(ParticleLink&);
@@ -35,14 +30,15 @@ public :
 	void Step(ParticleMaster *pM);
 
 	//Death
-	void SetDeathTime(float time);
+	void SetDeathTime(TasksMgr *taskMgr,float time);
+	void Death();
 
 
 protected :
-	sf::FloatRect particleStart;
 	std::vector<ParticleLink> particleChain;
 	int amount,interval,currentTime;  // <amount> defines amount of particles created per <interval>
 	TaskData *deathTask;
+	bool isDead;
 	
 private:
 };

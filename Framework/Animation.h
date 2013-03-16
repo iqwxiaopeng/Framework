@@ -8,6 +8,7 @@ class Animation : public Displayable
 public :
 	Animation(Displayable *img,int _frameCountX,int _frameCountY);
 	Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight);
+	virtual ~Animation();
 	//Starts animation functions
 	//Start Animation with current AnimationTime
 	void Start();
