@@ -2,7 +2,7 @@
 #include <cstdlib>
 class utils
 {
-	inline int GetRandom()
+	static inline int GetRandom()
 	{
 		return rand();
 	}

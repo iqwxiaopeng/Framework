@@ -1,5 +1,5 @@
 #include "ParticleGun.h"
-
+#include "Other.h"
 ParticleGun::ParticleGun() :
 	amount(0), interval(0), currentTime(0),
 	deathTask(nullptr),
