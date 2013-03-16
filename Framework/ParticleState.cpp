@@ -24,6 +24,7 @@ ParticleState ParticleState::operator+(ParticleState &rhp)
 	ret.r += rhp.r;
 	ret.g += rhp.g;
 	ret.b += rhp.b;
+	ret.a += rhp.a;
 	ret.x += rhp.x;
 	ret.y += rhp.y;
 	ret.rotation += rhp.rotation;
@@ -36,6 +37,7 @@ ParticleState ParticleState::operator+=(ParticleState &rhp)
 	r += rhp.r;
 	g += rhp.g;
 	b += rhp.b;
+	a += rhp.a;
 	x += rhp.x;
 	y += rhp.y;
 	rotation += rhp.rotation;
@@ -50,6 +52,7 @@ ParticleState ParticleState::operator-(ParticleState &rhp)
 	ret.r -= rhp.r;
 	ret.g -= rhp.g;
 	ret.b -= rhp.b;
+	ret.a -= rhp.a;
 	ret.x -= rhp.x;
 	ret.y -= rhp.y;
 	ret.rotation -= rhp.rotation;
@@ -62,6 +65,7 @@ ParticleState ParticleState::operator-=(ParticleState &rhp)
 	r -= rhp.r;
 	g -= rhp.g;
 	b -= rhp.b;
+	a -= rhp.a;
 	x -= rhp.x;
 	y -= rhp.y;
 	rotation -= rhp.rotation;
@@ -75,6 +79,7 @@ ParticleState ParticleState::operator /=(float rhp)
 	r /= rhp;
 	g /= rhp;
 	b /= rhp;
+	a /= rhp;
 	x /= rhp;
 	y /= rhp;
 	rotation /= rhp;
@@ -88,10 +93,26 @@ ParticleState ParticleState::operator /(float rhp)
 	ret.r /= rhp;
 	ret.g /= rhp;
 	ret.b /= rhp;
+	ret.a /= rhp;
 	ret.x /= rhp;
 	ret.y /= rhp;
 	ret.rotation /= rhp;
 	ret.scale /= rhp;
+	return ret;
+}
+
+ParticleState ParticleState::lerp(ParticleState &first,ParticleState &second,float amount)
+{
+	ParticleState ret;
+	ret.x =  first.x + (second.x - first.x) * amount;
+	ret.y =  first.x + (second.y - first.y) * amount;
+	ret.r =  first.r + (second.r - first.r) * amount;
+	ret.g =  first.g + (second.g - first.g) * amount;
+	ret.b =  first.b + (second.b - first.b) * amount;
+	ret.a =  first.a + (second.a - first.a) * amount;
+	ret.rotation =  first.rotation + (second.rotation - first.rotation) * amount;
+	ret.scale =  first.scale + (second.scale - first.scale) * amount;
+	ret.t = (int)(first.t + (second.t - first.t) * amount);
 	return ret;
 }
 

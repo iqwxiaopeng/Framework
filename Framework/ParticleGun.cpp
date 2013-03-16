@@ -46,12 +46,13 @@ void ParticleGun::step(ParticleMaster *pM)
 
 				ParticleState *nowy = new ParticleState(
 					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
-				nowy->x += x;
-				nowy->y += y;
+				nowy->x += this->x;
+				nowy->y += this->y;
 				states[x] = nowy;
 			}
-			
-			Particle *particle = new Particle(new Displayable(image));
+			sf::Sprite* spr = new sf::Sprite(*new sf::Texture(*image.sprite->getTexture()));
+			Displayable *disp =  new Displayable(spr);
+			Particle *particle = new Particle(disp);
 			particle->setStates(states);
 			pM->add(particle);
 			currentTime=0;
