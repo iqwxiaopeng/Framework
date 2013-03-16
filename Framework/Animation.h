@@ -2,21 +2,17 @@
 
 #include <SFML\Graphics.hpp>
 
-//placeholder, original one will be done by Castro12321
-class Displayable
-{
-	public :
-		sf::Sprite sprite;
-};
+class Displayable;
 
 class Animation
 {
 public :
-	Animation(Displayable img,int _frameCountX,int _frameCountY) :image(img),frameCountX(_frameCountX),frameCountY(_frameCountY),frameCount(_frameCountX*_frameCountY),
+	Animation(Displayable *img,int _frameCountX,int _frameCountY) : image(img),frameCountX(_frameCountX),frameCountY(_frameCountY),frameCount(_frameCountX*_frameCountY),
 		spaceX(0),spaceY(0),pause(true),animationTime(0)
 	{}
-		//Starts animation functions
-		//Start Animation with current AnimationTime
+
+	//Starts animation functions
+	//Start Animation with current AnimationTime
 	void Start();
 	//Starts Animation and sets AnimationTime
 	void Start(int); 
@@ -39,16 +35,15 @@ public :
 
 	bool pause;
 
-protected :
-
-Displayable image;
-float posX,posY;
-int frameWidth,frameHeight;
-int frameCountX,frameCountY,frameCount;
-int animationTime,currentTime,timePerFrame,currentFrame;
-int spaceX,spaceY;
+protected:
+	Displayable *image;
+	float posX,posY;
+	int frameWidth,frameHeight;
+	int frameCountX,frameCountY,frameCount;
+	int animationTime,currentTime,timePerFrame,currentFrame;
+	int spaceX,spaceY;
 
 	void SetFrameBounds();
 
-private :
+private:
 };
