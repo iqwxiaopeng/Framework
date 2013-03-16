@@ -69,6 +69,9 @@
     <ClInclude Include="TasksMgr.h">
       <Filter>Tasks</Filter>
     </ClInclude>
+    <ClInclude Include="Displayable.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="TasksMgr.cpp">
       <Filter>Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="Displayable.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

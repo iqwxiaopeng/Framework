@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Displayable.h" />
     <ClInclude Include="EmptyWindow.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Events.h" />
@@ -102,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Displayable.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventsMgr.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
