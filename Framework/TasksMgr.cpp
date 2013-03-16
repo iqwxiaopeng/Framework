@@ -11,7 +11,7 @@ TasksMgr::~TasksMgr()
 	}
 }
 
-void TasksMgr::run(float time)
+void TasksMgr::step(float time)
 {
 	// get through all registered tasks
 	for(auto it : tasks)

@@ -4,6 +4,6 @@
 class EmptyWindow : public Window
 {
 public:
-	void Step(float frameTime) override {}
-	void Render(sf::RenderWindow *pRW) override {}
+	void step(float frameTime) override {}
+	void render(sf::RenderWindow *pRW) override {}
 };

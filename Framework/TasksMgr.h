@@ -41,7 +41,7 @@ public:
 	~TasksMgr();
 
 	// time - time passed since last tick
-	void run(float time);
+	void step(float time);
 	TaskData* registerTask(functor funcPointer, float interval);
 	void removeTask(TaskData *td);
 
