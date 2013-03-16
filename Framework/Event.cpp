@@ -23,7 +23,7 @@ void Event::setDefault()
 	allow();
 }
 
-void Event::propagate()
+void Event::propagate(EventsMgr* pEM)
 {
-	Event::pEM->propagateEvent(*this);
+	pEM->propagateEvent(*this);
 }

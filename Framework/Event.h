@@ -15,7 +15,6 @@ class EventsMgr;
 class Event
 {
 public:
-	static EventsMgr *pEM;
 	Event(int _type);
 
 	EventResults::result result;
@@ -24,5 +23,5 @@ public:
 	void allow(); // allow event
 	void deny(); // deny event
 	virtual void setDefault();
-	void propagate();
+	void propagate(EventsMgr *pEM);
 };
