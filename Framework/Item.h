@@ -13,5 +13,12 @@ public:
 	{
 	}
 
+	enum type
+	{
+		NODE,
+		VALUE
+	};
+	type itemType;
+
 	//virtual const std::string getType();
 };

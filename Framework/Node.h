@@ -2,8 +2,5 @@
 
 class Node : public Item
 {
-public:
-	const std::string getType() {
-		return "Node";
-	}
+	std::vector<Item*> items;
 };

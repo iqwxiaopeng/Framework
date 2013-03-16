@@ -4,7 +4,7 @@
 #include <boost\lexical_cast.hpp>
 
 
-class Value
+class Value : public Item
 {
 public:
 	Value() {} // default ctor
