@@ -59,7 +59,7 @@ void ParticleGun::Step(ParticleMaster *pM)
 
 void ParticleGun::SetDeathTime(TasksMgr *taskMgr,float time)
 {
-	deathTask = taskMgr->registerTask(std::bind(Death),time);
+	deathTask = taskMgr->registerTask(std::bind(&ParticleGun::Death,this),time);
 }
 
 void ParticleGun::Death()
