@@ -2,13 +2,12 @@
 
 #include <SFML\Graphics.hpp>
 
-class Displayable;
 
 class Animation
 {
 public :
 	Animation(Displayable *img,int _frameCountX,int _frameCountY);
-
+	Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight);
 	//Starts animation functions
 	//Start Animation with current AnimationTime
 	void Start();
@@ -22,6 +21,7 @@ public :
 	void SetAnimationTime(int);
 	void SetAnimationFrame(int);
 	void SetPosition(float,float);
+	void SetFrameSize(int,int);
 	//set spaces between frames.
 	void SetSpaces(int,int);
 	//Pause/Unpause animation. Returns the actual state of Pausing

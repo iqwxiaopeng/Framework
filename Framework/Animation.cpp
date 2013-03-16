@@ -3,7 +3,7 @@
 
 #include "Displayable.h"
 
-Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
+Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
 	image(img),
 	frameCountX(_frameCountX),
 	frameCountY(_frameCountY),
@@ -14,6 +14,22 @@ Animation(Displayable *img, int _frameCountX, int _frameCountY) :
 	animationTime(0)
 {
 }
+
+Animation::Animation(Displayable *img,int _frameCountX,int _frameCountY,int _frameWidth,int _frameHeight)
+	: 
+	image(img),
+	frameCountX(_frameCountX),
+	frameCountY(_frameCountY),
+	frameCount(_frameCountX*_frameCountY),
+	spaceX(0),
+	spaceY(0),
+	pause(true),
+	animationTime(0),
+	frameWidth(_frameWidth),
+	frameHeight(_frameHeight)
+{
+}
+
 
 void Animation::SetAnimationTime(int time)
 {
@@ -80,4 +96,10 @@ void Animation::SetPosition(float x,float y)
 	posX = x;
 	posY = y;
 	image.sprite.setPosition(x,y);
+}
+
+void Animation::SetFrameSize(int width,int height)
+{
+	frameHeight = height;
+	frameWidth = width;
 }
