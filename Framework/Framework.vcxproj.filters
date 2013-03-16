@@ -99,6 +99,12 @@
     <ClInclude Include="ParticleGun.h">
       <Filter>Graphics\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleMaster.h">
+      <Filter>Graphics\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Other.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">

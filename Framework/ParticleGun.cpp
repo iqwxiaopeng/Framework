@@ -33,6 +33,7 @@ void ParticleGun::Step(ParticleMaster *pM)
 			(particleChain.size(),nullptr);
 		for(int x = 0;x < particleChain.size();x++)
 		{
+			
 			ParticleState *nowy = new ParticleState(
 				(particleChain[x].min.x + particleChain[x].min.y) / 2
 		}
