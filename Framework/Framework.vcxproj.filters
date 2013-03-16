@@ -22,9 +22,6 @@
     <Filter Include="Misc\VS-files">
       <UniqueIdentifier>{cc3ca0b3-aa88-4942-b3d1-c6cce4836355}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Animation">
-      <UniqueIdentifier>{5b18c627-f3bd-488b-9fb6-6661b1f6f9d6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Events">
       <UniqueIdentifier>{7e3a9388-2aa0-4de1-8b85-cf1191310ac8}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,12 @@
     </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{0d726f92-e0ed-48c3-8a37-9278fe5bcb16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Animation">
+      <UniqueIdentifier>{5b18c627-f3bd-488b-9fb6-6661b1f6f9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Particle">
+      <UniqueIdentifier>{f960d350-b539-43c2-a5bf-db67bb3c3253}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +55,7 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Animation</Filter>
+      <Filter>Graphics\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>Events</Filter>
@@ -69,6 +72,9 @@
     <ClInclude Include="Displayable.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Graphics\Particle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -78,7 +84,7 @@
       <Filter>Misc\VS-files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Animation</Filter>
+      <Filter>Graphics\Animation</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>Events</Filter>
