@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Displayable.h"
 #include <SFML\Graphics.hpp>
 
 
@@ -20,7 +20,7 @@ public :
 	void Stop(); //Return to 0 frame.
 	void SetAnimationTime(int);
 	void SetAnimationFrame(int);
-	void SetPosition(float,float);
+	void SetPosition(int,int);
 	void SetFrameSize(int,int);
 	//set spaces between frames.
 	void SetSpaces(int,int);
@@ -35,7 +35,6 @@ public :
 
 protected:
 	Displayable *image;
-	float posX,posY;
 	int frameWidth,frameHeight;
 	int frameCountX,frameCountY,frameCount;
 	int animationTime,currentTime,timePerFrame,currentFrame;

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Animation.h"
 
-#include "Displayable.h"
-
 Animation::Animation(Displayable *img, int _frameCountX, int _frameCountY) : 
 	image(img),
 	frameCountX(_frameCountX),
@@ -74,7 +72,7 @@ void Animation::Tick(float frameTime)
 {
 	if(pause)return;
 	currentTime++;
-	currentFrame = currentFrame / timePerFrame;
+	currentFrame = currentTime / timePerFrame;
 	currentTime %= animationTime;
 	SetFrameBounds();
 }
@@ -83,19 +81,19 @@ void Animation::SetFrameBounds()
 {
 	int frameX = currentFrame % frameCountX;
 	int frameY = currentFrame / frameCountX;
-	image.sprite.setTextureRect(sf::IntRect( (frameWidth+spaceX) * frameX,(frameHeight+spaceY) * frameY,frameWidth,frameHeight)); //can be deleted, not sure.
+	image->sprite->setTextureRect(sf::IntRect( (frameWidth+spaceX) * frameX,(frameHeight+spaceY) * frameY,frameWidth,frameHeight)); //can be deleted, not sure.
 }
 
 void Animation::Render(sf::RenderWindow *pRW)
 {
-	pRW->draw(image.sprite);
+	pRW->draw(*image->sprite);
 }
 
-void Animation::SetPosition(float x,float y)
+void Animation::SetPosition(int _x,int _y)
 {
-	posX = x;
-	posY = y;
-	image.sprite.setPosition(x,y);
+	image->x = _x;
+	image->y = _y;
+	image->sprite->setPosition(_x,_y);
 }
 
 void Animation::SetFrameSize(int width,int height)
