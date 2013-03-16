@@ -1,9 +1,10 @@
 #include "ParticleGun.h"
 #include "Other.h"
-ParticleGun::ParticleGun() :
+ParticleGun::ParticleGun(Displayable disp) :
 	amount(0), interval(0), currentTime(0),
 	deathTask(nullptr),
-	isDead(false)
+	isDead(false),
+	image(disp)
 {
 }
 
@@ -37,7 +38,10 @@ void ParticleGun::Step(ParticleMaster *pM)
 
 			ParticleState *nowy = new ParticleState(
 				ParticleState::Lerp(particleChain[x].min,particleChain[x].max,value));
+			states[x] = nowy;
 		}
+		Particle *particle = new Particle(new Displayable(image));
+		particle->
 	}
 }
 

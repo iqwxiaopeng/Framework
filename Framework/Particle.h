@@ -31,7 +31,12 @@ class Particle
 public :
 	Particle(Displayable *);
 	virtual ~Particle();
+
+
 	void AddState(ParticleState *);
+	void SetStates(std::vector<ParticleState *>);
+
+
 	virtual void Step();
 	virtual void Render(sf::RenderWindow*);
 	bool End(); //return true if particle completed all states;

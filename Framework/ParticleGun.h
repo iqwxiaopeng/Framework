@@ -17,7 +17,7 @@ struct ParticleLink
 class ParticleGun
 {
 public :
-	ParticleGun();
+	ParticleGun(Displayable disp);
 
 	//Chain
 	void AddParticleLink(ParticleLink&);
@@ -35,6 +35,7 @@ public :
 
 
 protected :
+	Displayable image;
 	std::vector<ParticleLink> particleChain;
 	int amount,interval,currentTime;  // <amount> defines amount of particles created per <interval>
 	TaskData *deathTask;

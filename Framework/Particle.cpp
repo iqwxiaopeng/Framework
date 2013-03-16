@@ -77,3 +77,19 @@ ParticleState ParticleState::Lerp(ParticleState &first,ParticleState &second,flo
 	ret.t =  first.t + (second.t - first.t) * amount;
 	return ret;
 }
+
+void Particle::SetStates(std::vector<ParticleState*> _states)
+{
+	 states = _states;
+	 if(states.size() >= 1)
+	{
+		stage = 0;
+		currentTime = 0;
+		currentState =  *states[0];
+	}
+	if(states.size() >= 2)
+	{
+		changeState = new ParticleState();
+		*changeState = (*states[1] - *states[0]) / states[1]->t;
+	}
+}
