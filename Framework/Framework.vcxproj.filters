@@ -40,6 +40,12 @@
     <Filter Include="Graphics\Particle">
       <UniqueIdentifier>{f960d350-b539-43c2-a5bf-db67bb3c3253}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Files">
+      <UniqueIdentifier>{7f7ae27d-7b30-48a8-80f3-31edbb6c9802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Files\Config">
+      <UniqueIdentifier>{34cf9985-ce0d-4836-b07f-0729dbf6cf89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -75,6 +81,21 @@
     <ClInclude Include="Particle.h">
       <Filter>Graphics\Particle</Filter>
     </ClInclude>
+    <ClInclude Include="FileMgr.h">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.h">
+      <Filter>Files\Config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -100,6 +121,12 @@
     </ClCompile>
     <ClCompile Include="Displayable.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMgr.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Files\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -90,22 +90,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="Displayable.h" />
     <ClInclude Include="EmptyWindow.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventsMgr.h" />
+    <ClInclude Include="FileMgr.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ResourcesMgr.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TasksMgr.h" />
+    <ClInclude Include="Value.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="Displayable.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventsMgr.cpp" />
+    <ClCompile Include="FileMgr.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
