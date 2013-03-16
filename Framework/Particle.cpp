@@ -1,8 +1,7 @@
+#include "stdafx.h"
 #include "Particle.h"
 
-Particle::Particle() : stage(-1),currentTime(-1)
-{
-}
+
 Particle::~Particle()
 {
 	for(int i = 0;i < states.size();i++)
@@ -39,7 +38,7 @@ bool Particle::SwitchStage()
 	{//Time for next state
 		stage++;
 		currentState = *states[stage];
-		*changeState = (*states[stage] - *states[stage-1]) / (float)(states[stage]->t - states[stage-1]->t);
+		*changeState = (*states[stage] - *states[stage-1])/ (float)(states[stage]->t - states[stage-1]->t);
 		return true;
 	}
 	return false;

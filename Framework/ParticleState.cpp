@@ -1,8 +1,9 @@
+#include "stdafx.h"
 #include "Particle.h"
 
 ParticleState::ParticleState() :
-	r(0),g(0),b(0),a(255)
-	x(0),y(0),
+	r(0), g(0), b(0), a(255),
+	x(0), y(0),
 	rotation(0.f),
 	scale(1.f),
 	t(0)
@@ -69,7 +70,7 @@ ParticleState ParticleState::operator-=(ParticleState &rhp)
 	return *this;
 }
 
-ParticleState ParticleState::operator /=(float &rhp)
+ParticleState ParticleState::operator /=(float rhp)
 {
 	r /= rhp;
 	g /= rhp;
@@ -81,7 +82,7 @@ ParticleState ParticleState::operator /=(float &rhp)
 	return *this;
 }
 
-ParticleState ParticleState::operator /(float &rhp)
+ParticleState ParticleState::operator /(float rhp)
 {
 	ParticleState ret = *this;
 	ret.r /= rhp;

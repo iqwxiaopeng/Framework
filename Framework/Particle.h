@@ -16,8 +16,8 @@ struct ParticleState
 	ParticleState operator += (ParticleState &rhp);
 	ParticleState operator -(ParticleState &rhp);
 	ParticleState operator -=(ParticleState &rhp);
-	ParticleState operator /= (float &rhp);
-	ParticleState operator /(float &rhp);
+	ParticleState operator /= (float rhp);
+	ParticleState operator /(float rhp);
 	operator sf::Color();
 	//inverts all values.
 	ParticleState operator !();
