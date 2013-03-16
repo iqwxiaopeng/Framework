@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include <boost\function.hpp>
 #include <list>
+#include <functional>
 
 class TaskTimer
 {
