@@ -161,6 +161,9 @@
     <ClCompile Include="Logger.cpp">
       <Filter>Files\Logger</Filter>
     </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">

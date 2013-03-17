@@ -126,6 +126,7 @@
     <ClCompile Include="ParticleGun.cpp" />
     <ClCompile Include="ParticleMaster.cpp" />
     <ClCompile Include="ParticleState.cpp" />
+    <ClCompile Include="PerlinNoise.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
