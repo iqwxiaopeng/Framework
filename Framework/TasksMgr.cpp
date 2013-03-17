@@ -20,8 +20,11 @@ void TasksMgr::step(float time)
 		{
 			it.first->time = it.first->interval; // reset counter
 			// get through all registered functions for this task
-			for(auto it2 = it.second->begin(), next = it2; it2 != it.second->end(); it2 = next++)
+			for(auto it2 = it.second->begin(), next = it2; it2 != it.second->end(); it2 = next)
+			{
+				next++;
 				(it2->executor)(&*it2); // calls a function stored in it2
+			}
 		}
 		else
 			it.first->time -= time;

@@ -63,8 +63,11 @@ class EventsMgr
 			if(funcs.size() > (unsigned)e.type)
 			{
 				std::list<EventData>* funcList = funcs[e.type];
-				for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next++)
+				for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next)
+				{
+					next++;
 					it->executor(e, &*it);
+				}
 			}
 		}
 };
