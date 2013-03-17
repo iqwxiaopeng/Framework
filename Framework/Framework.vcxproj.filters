@@ -46,6 +46,9 @@
     <Filter Include="Files\Config">
       <UniqueIdentifier>{34cf9985-ce0d-4836-b07f-0729dbf6cf89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Files\Logger">
+      <UniqueIdentifier>{cbe7d6a6-8625-4c92-b442-8fb8bc69df34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -102,8 +105,11 @@
     <ClInclude Include="ParticleMaster.h">
       <Filter>Graphics\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Other.h">
+    <ClInclude Include="Utils.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Files\Logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +154,12 @@
     </ClCompile>
     <ClCompile Include="ParticleMaster.cpp">
       <Filter>Graphics\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Files\Logger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
