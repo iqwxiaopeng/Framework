@@ -1,10 +1,15 @@
 #pragma once
+
 #include <cstdlib>
-class utils
+#include <iostream>
+
+class Utils
 {
-public : 
+public:
 	static inline int GetRandom()
 	{
 		return rand();
 	}
+
+	static std::string getTime();
 };
