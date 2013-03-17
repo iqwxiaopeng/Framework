@@ -60,15 +60,11 @@ class EventsMgr
 		void propagateEvent(const EVENT_TYPE &e)
 		{
 			// Iterate through all pointers for event and call them
-			std::list<EventData>* funcList = funcs[e.type];
-			for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next)
+			if(funcs.size() > (unsigned)e.type)
 			{
-				++next;
-				it->executor(e, &*it);
+				std::list<EventData>* funcList = funcs[e.type];
+				for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next++)
+					it->executor(e, &*it);
 			}
-			/* TODO: check if it works
-			for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next++)
-				it->executor(e, &*it);
-			*/
 		}
 };
