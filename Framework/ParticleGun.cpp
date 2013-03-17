@@ -16,7 +16,7 @@ void ParticleGun::addParticleLink(ParticleLink &link)
 }
 
 
-void ParticleGun::addParticleLink(ParticleState &first,ParticleState &second)
+void ParticleGun::addParticleLink(ParticleState first,ParticleState second)
 {
 	particleChain.push_back(ParticleLink(first,second));
 }

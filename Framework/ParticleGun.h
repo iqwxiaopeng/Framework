@@ -22,7 +22,7 @@ public:
 
 	//Chain
 	void addParticleLink(ParticleLink&);
-	void addParticleLink(ParticleState &first, ParticleState &second);
+	void addParticleLink(ParticleState first, ParticleState second);
 
 	//Params
 	void setParameters(int _amount, int _interval);
