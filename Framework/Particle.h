@@ -8,12 +8,10 @@ struct ParticleState
 	float x,y;
 	float rotation;
 	float scale;
-	int t;/* Refers to tick time when ParticleStates switches;
-	Not affected by +,-,/ */
-	float v;
+	int t;// Refers to tick time when ParticleStates switches;
 
 	ParticleState();
-	ParticleState(sf::Color, int _x, int _y, float _rotation, float _scale, int _v);
+	ParticleState(sf::Color, int _x, int _y, float _rotation, float _scale, int _t);
 	ParticleState operator +  (ParticleState &rhp);
 	ParticleState operator += (ParticleState &rhp);
 	ParticleState operator -  (ParticleState &rhp);
