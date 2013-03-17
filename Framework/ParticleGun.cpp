@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "ParticleGun.h"
-#include "Other.h"
+#include "Utils.h"
 ParticleGun::ParticleGun(Displayable disp) :
 	amount(0), interval(0), currentTime(0),
 	deathTask(nullptr),
@@ -42,7 +42,7 @@ void ParticleGun::step(ParticleMaster *pM)
 			
 			for(unsigned int x = 0;x < particleChain.size();x++)
 			{
-				float value = (float)(utils::GetRandom() % 100) / 100.f;
+				float value = (float)(Utils::GetRandom() % 100) / 100.f;
 
 				ParticleState *nowy = new ParticleState(
 					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
