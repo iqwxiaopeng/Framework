@@ -21,7 +21,7 @@ void Particle::addState(ParticleState *state)
 	else if(stage == 0 && changeState == NULL)
 	{
 		changeState = new ParticleState();
-		*changeState = (*state) / (float)state->t;
+		*changeState = (*state - *states[0]) / (float)state->t;
 	}
 	states.push_back(state);
 }
@@ -39,7 +39,7 @@ bool Particle::switchStage()
 	if(currentTime == states[stage+1]->t)
 	{//Time for next state
 		stage++;
-		*changeState = (*states[stage+1])/ (float)(states[stage+1]->t - states[stage]->t);
+		*changeState = (*states[stage+1] - *states[stage])/ (float)(states[stage+1]->t - states[stage]->t);
 		return true;
 	}
 	return false;
@@ -76,6 +76,6 @@ void Particle::setStates(std::vector<ParticleState*> _states)
 	if(states.size() >= 2)
 	{
 		changeState = new ParticleState();
-		*changeState = (*states[1]) / (float)states[1]->t;
+		*changeState = (*states[1] - * states[0]) / (float)states[1]->t;
 	}
 }

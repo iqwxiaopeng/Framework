@@ -46,7 +46,7 @@ void ParticleGun::step(ParticleMaster *pM)
 
 				ParticleState *nowy = new ParticleState(
 					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
-				if(x == 0)
+				//if(x == 0)
 				{
 				nowy->x += this->x;
 				nowy->y += this->y;

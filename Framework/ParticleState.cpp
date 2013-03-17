@@ -105,7 +105,7 @@ ParticleState ParticleState::lerp(ParticleState &first,ParticleState &second,flo
 {
 	ParticleState ret;
 	ret.x =  first.x + (second.x - first.x) * amount;
-	ret.y =  first.x + (second.y - first.y) * amount;
+	ret.y =  first.y + (second.y - first.y) * amount;
 	ret.r =  first.r + (second.r - first.r) * amount;
 	ret.g =  first.g + (second.g - first.g) * amount;
 	ret.b =  first.b + (second.b - first.b) * amount;
