@@ -6,15 +6,15 @@ ParticleState::ParticleState() :
 	x(0), y(0),
 	rotation(0.f),
 	scale(1.f),
-	t(0)
+	t(0),v(0.f)
 {
 }
-ParticleState::ParticleState(sf::Color _color,int _x,int _y,float _rotation,float _scale,int _t):
+ParticleState::ParticleState(sf::Color _color,int _x,int _y,float _rotation,float _scale,int _v):
 	r(_color.r),g(_color.g),b(_color.b),a(_color.a),
 	x((float)_x),y((float)_y),
 	rotation(_rotation),
 	scale(_scale),
-	t(_t)
+	t(0),v(_v)
 {
 }
 
@@ -29,7 +29,7 @@ ParticleState ParticleState::operator+(ParticleState &rhp)
 	ret.y += rhp.y;
 	ret.rotation += rhp.rotation;
 	ret.scale += rhp.scale;
-	ret.t += rhp.t;
+	ret.v += rhp.v;
 	return ret;
 }
 ParticleState ParticleState::operator+=(ParticleState &rhp)
@@ -42,7 +42,7 @@ ParticleState ParticleState::operator+=(ParticleState &rhp)
 	y += rhp.y;
 	rotation += rhp.rotation;
 	scale += rhp.scale;
-	t += rhp.t;
+	v += rhp.v;
 	return *this;
 }
 
@@ -57,7 +57,7 @@ ParticleState ParticleState::operator-(ParticleState &rhp)
 	ret.y -= rhp.y;
 	ret.rotation -= rhp.rotation;
 	ret.scale -= rhp.scale;
-	ret.t -= rhp.t;
+	ret.v -= rhp.v;
 	return ret;
 }
 ParticleState ParticleState::operator-=(ParticleState &rhp)
@@ -70,7 +70,7 @@ ParticleState ParticleState::operator-=(ParticleState &rhp)
 	y -= rhp.y;
 	rotation -= rhp.rotation;
 	scale -= rhp.scale;
-	t -= rhp.t;
+	v -= rhp.v;
 	return *this;
 }
 
@@ -84,6 +84,7 @@ ParticleState ParticleState::operator /=(float rhp)
 	y /= rhp;
 	rotation /= rhp;
 	scale /= rhp;
+	v /= rhp;
 	return *this;
 }
 
@@ -98,6 +99,7 @@ ParticleState ParticleState::operator /(float rhp)
 	ret.y /= rhp;
 	ret.rotation /= rhp;
 	ret.scale /= rhp;
+	ret.v /= rhp;
 	return ret;
 }
 
