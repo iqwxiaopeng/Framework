@@ -23,5 +23,10 @@ public:
 	void allow(); // allow event
 	void deny(); // deny event
 	virtual void setDefault();
+
 	void propagate(EventsMgr *pEM);
+	
+private:
+	Event(const Event&);
+	Event& operator=(const Event&);
 };
