@@ -31,12 +31,12 @@ class EventsMgr
 		std::vector<std::list<EventData>*> funcs; // List of events
 
 		#define registerEventMacro(eventName, type, ptr) \
-			registerEvent<eventName> (type, std::bind(&ptr, std::placeholders::_1, std::placeholders::_2))
+			registerEvent<eventName> ((unsigned)type, std::bind(&ptr, std::placeholders::_1, std::placeholders::_2))
 		#define registerEventMacroForClass(eventName, type, ptr, callerClass) \
-			registerEvent<eventName> (type, std::bind(&callerClass::ptr, this, std::placeholders::_1, std::placeholders::_2))
+			registerEvent<eventName> ((unsigned)type, std::bind(&callerClass::ptr, this, std::placeholders::_1, std::placeholders::_2))
 
 		template <typename EVENT_TYPE>
-		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, int)> funcPtr)
+		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr)
 		{
 			// Fit array size for new events
 			while(funcs.size() <= eventType)
