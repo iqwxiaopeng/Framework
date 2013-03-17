@@ -14,9 +14,6 @@ public:
 	Window();
 	virtual ~Window();
 
-	std::vector<EventData*> events;
-	std::vector<TaskData*> tasks;
-
 	virtual void step(float frameTime) = 0;
 	virtual void render(sf::RenderWindow *pRW) = 0;
 
