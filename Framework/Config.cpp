@@ -2,6 +2,8 @@
 #include "Config.h"
 
 #include <fstream>
+#include <iostream>
+
 
 Config::Config(std::string filePath) : path(filePath), saveFile(false)
 {
