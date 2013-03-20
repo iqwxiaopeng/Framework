@@ -3,9 +3,8 @@
 
 ResourcesMgr::ResourcesMgr()
 {
-	addTexture("grass");
-	addTexture("stone");
 }
+
 
 
 ResourcesMgr::~ResourcesMgr()
@@ -18,7 +17,7 @@ ResourcesMgr::~ResourcesMgr()
 sf::Texture* ResourcesMgr::getTexture(std::string filename)
 {
 	sf::Texture *t = new sf::Texture();
-	t->loadFromFile("data\\weapons\\" + filename);
+	t->loadFromFile("GFX\\" + filename);
 	return t;
 }
 

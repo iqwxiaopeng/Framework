@@ -1,11 +1,12 @@
 #pragma once
-
+class ResourcesMgr;
 #include <SFML\Graphics.hpp>
 
 class Displayable
 {
 	public:
 		Displayable(sf::Sprite *);
+		virtual ~Displayable();
 		int x, y;
 		sf::Sprite *sprite;
 
@@ -13,4 +14,5 @@ class Displayable
 		{
 			pRW->draw(*sprite);
 		}
+		virtual void setSprite(std::string filename,ResourcesMgr *rMgr,bool resetRect = false);
 };
