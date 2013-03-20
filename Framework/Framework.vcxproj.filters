@@ -90,13 +90,7 @@
     <ClInclude Include="Config.h">
       <Filter>Files\Config</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Files\Config</Filter>
-    </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Files\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Value.h">
       <Filter>Files\Config</Filter>
     </ClInclude>
     <ClInclude Include="ParticleGun.h">
