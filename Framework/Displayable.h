@@ -6,6 +6,7 @@ class Displayable
 {
 	public:
 		Displayable(sf::Sprite *);
+		Displayable();
 		virtual ~Displayable();
 		int x, y;
 		sf::Sprite *sprite;

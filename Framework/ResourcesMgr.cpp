@@ -30,5 +30,5 @@ void ResourcesMgr::addObject(std::unordered_map<std::string, sf::Texture*>& map,
 
 void ResourcesMgr::addTexture(std::string name)
 {
-	addObject(this->textures, name + ".png");
+	addObject(this->textures, name);
 }
