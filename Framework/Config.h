@@ -6,80 +6,76 @@
 
 #include "FileMgr.h"
 
-#include "Item.h"
 #include "Node.h"
-#include "Value.h"
+
+
+// TODO: move it to utils
+#include <climits>
+#include <sstream>
+std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems, int limit = INT_MAX)
+{
+	std::stringstream ss(s);
+	std::string item;
+	int i = 0;
+	while(std::getline(ss, item, delim))
+	{
+		elems.push_back(item);
+		if(++i >= limit)
+			break;
+	}
+
+	// TODO: maybe a better way? :D
+	while(std::getline(ss, item, ' '))
+	{
+		item = ' ' + item;
+		elems[elems.size()-1] += item;
+	}
+	return elems;
+}
+std::vector<std::string> split(const std::string& s, char delim, int limit = 0)
+{
+	std::vector<std::string> elems;
+	return split(s, delim, elems, limit);
+}
+
+
+
 
 class Config
 {
-	public:
-		Config(std::string path);
-		~Config();
+public:
+	Config(std::string path);
+	~Config();
 
-		std::string path; // path to config file
-		//typedef std::unordered_map<std::string, std::string> values_map;
-		typedef std::unordered_map<std::string, Value> values_map;
-		values_map values;
-		bool saveFile; // Is it needed to save config to file
+	std::string path; // path to config file
+	Node *root;
 
-		bool readValues();
 
-		/*
-			* checkSet -> Check if <path> is set in config; If no, create it
-			*/
-		template <typename T>
-		bool checkSet (std::string key, T value) {
-			if (!isSet(key))
-				return set(key, value);
-			return true;
-		}
+	bool reload();
+	bool save();
+	Node* get(std::string key); // returns node specified by key in config
 
-		/*
-			* set -> Write value to config
-			*/
-		template <typename T>
-		bool set(std::string key, T value) {
-			values [key] = value;//return pFM->writeln(path, key + "=" + boost::lexical_cast<std::string>(value));
-			saveFile = true;
-			return true;
-		}
+	// Checks if <path> is set in config; If no, create it
+	template <typename T>
+	void checkSet (std::string key, T value) {
+		if (!isSet(key)) set(key, value);
+	}
 
-		/*
-			* isSet -> Check if <path> is set in config file
-			*/
-		bool isSet(std::string key) {
-			if (FileMgr::search(path, key+"=.*") > 0)
-				return true;
-			return false;
-		}
 
-		/*
-			* get -> get value from config
-			*/
-		Value get(std::string key) {
-			//return values[key].as<T>();
-			return (*this)[key];
-		}
-		/*
-		template <typename T>
-		T get(std::string key) {
-			//return values[key].as<T>();
-			return (*this)[key].as<T>();
-		}
-		*/
+	// Writes value to config
+	template <typename T>
+	void set(std::string key, T value) {
+		get(key) = value;
+	}
 
-		/*int& IntList::operator[] (const int nIndex)
-		{
-			return m_anList[nIndex];
-		}*/
 
-		Value& operator[](const std::string key) {
-			return values[key];
-		}
+	// Checks if key is set in config file
+	bool isSet(std::string key) {
+		return get(key) != nullptr;
+	}
 
-		bool reload();
-		bool save();
-	protected:
-	private:
-		std::vector <Item> nodes;
+
+	Node& operator[](const std::string key) {
+		return *get(key);
+	}
 };

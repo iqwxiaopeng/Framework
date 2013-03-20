@@ -1,46 +1,101 @@
 #include "stdafx.h"
 #include "Config.h"
 
+#include "Logger.h"
+
 #include <fstream>
-#include <iostream>
 
-
-Config::Config(std::string filePath) : path(filePath), saveFile(false)
+Config::Config(std::string filePath) : path(filePath)
 {
 	std::fstream file(path, std::ios::app);
 	if (!file.good())
-		std::cout << "Could not open config file";
+		Logger::log("Could not open config file");
 	file.close();
 }
 
+
 Config::~Config()
 {
-	//dtor
+	delete root; // root will delete its child values as well
 }
 
 
-/*
-* reload -> Clears all values then load them again from file
-*/
+Node* Config::get(std::string key)
+{
+	// TODO: move split to utils
+	std::vector<std::string> nodes = split(key, '.', 0);
+		
+	Node *node = root;
+	for(std::string n : nodes)
+		if (node->nodes.find(key) != node->nodes.end())
+			node = node->nodes[n];
+		else
+			return nullptr;
+	return node;
+}
+
+
+int getDeep(std::string& line)
+{
+	int deep = 0;
+	for(char c : line)
+	{
+		if(c != '	') // tab
+			break;
+		deep++;
+	}
+	return deep;
+}
+
+
+void fillNode(Node *n, std::string& line, int deep)
+{
+	line = line.substr(deep); // to remove first tabs
+
+	// split(string, ':', 1); to separate the path and the value
+	std::vector<std::string> splitted = split(line, ':', 1);
+	if(splitted.size() != 2)
+		Logger::log("Error while parsing YAML file in: " + line, Logger::levels::critical);
+
+	std::string key = splitted[0];
+	std::string value = splitted[1];
+	*n = value;
+}
+
+
+// reload Clears all values then load them again from file
 bool Config::reload()
 {
-	// clear all values
-	// load all value
-	throw "not implemented yet";
+	delete root;
+	root = new Node(nullptr);
+
+	Node *node = root;
+	int deep = 0;
+	std::vector<std::string> lines = FileMgr::getFile(path);
+	for(std::string line : lines)
+	{
+		int newDeep = getDeep(line);
+		if(newDeep > deep)
+			node = new Node(root);
+		while(newDeep < deep)
+			node = node->parent;
+
+		fillNode(node, line, deep);
+	}
+
+	return true;
 }
 
 
-/*
-* save -> Saves all values stored in values variable to file
-*/
+// Saves all values stored in root to file
 bool Config::save()
 {
-	// write new values to file
-	// write updated values to file
 	std::fstream file(path, std::ios::trunc | std::ios::out);
 	if (file.good())
 	{
 		std::string line;
+
+		/*
 		for (values_map::iterator it = values.begin(); it != values.end(); ++it)
 		{
 			line = it->first;
@@ -48,48 +103,10 @@ bool Config::save()
 			file << line + "\n";			
 		}
 		file.flush();
+		*/
 	}
 	else
 		std::cout << "Could not save config values to file";
 
-	saveFile = false;
-	return true;
-}
-
-bool Config::readValues()
-{
-	std::fstream file;
-	file.open(path, std::ios::in);
-	std::string key;
-
-	if (file.good())
-	{
-		std::string key;
-		std::string value;
-		std::string text;
-
-		getline (file, text);
-		if (!file.eof())
-			do
-			{
-				key = ""; value = "";
-
-				if (!(text [0] == '#'))
-				{
-					unsigned int i = 0;
-
-					for (; text [i] != '='; ++i)
-						key += text [i];
-					for (++i; i < text.length(); ++i) // First "++i" deletes "="
-						value += text [i];
-					values [key] = value;
-				}
-				getline (file, text);
-			} while (!file.eof());
-	}
-	else
-		std::cout << path << " not found! Can't read config values";
-	
-	file.close();
 	return true;
 }
