@@ -44,9 +44,9 @@ int FileMgr::search(std::string path, std::string _regex)
 	return count;
 }
 
-list<string> FileMgr::getFile(std::string path)
+std::vector<std::string> FileMgr::getFile(std::string path)
 {
-	list<string> lines;
+	std::vector<std::string> lines;
 	std::fstream file;
 	std::string line;
 
