@@ -27,7 +27,7 @@ public:
 
 	template <typename T>
 	T as() {
-		return boost::lexical_cast<T>(value);
+		return boost::lexical_cast<T>(*value);
 	}
 
 

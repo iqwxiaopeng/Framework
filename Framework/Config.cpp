@@ -2,6 +2,7 @@
 #include "Config.h"
 
 #include "Logger.h"
+#include "Utils.h"
 
 #include <fstream>
 
@@ -23,11 +24,11 @@ Config::~Config()
 Node* Config::get(std::string key)
 {
 	// TODO: move split to utils
-	std::vector<std::string> nodes = split(key, '.', 0);
+	std::vector<std::string> nodes = Utils::split(key, '.', 0);
 		
 	Node *node = root;
 	for(std::string n : nodes)
-		if (node->nodes.find(key) != node->nodes.end())
+		if (node->nodes.find(n) != node->nodes.end())
 			node = node->nodes[n];
 		else
 			return nullptr;
@@ -53,7 +54,7 @@ void fillNode(Node *n, std::string& line, int deep)
 	line = line.substr(deep); // to remove first tabs
 
 	// split(string, ':', 1); to separate the path and the value
-	std::vector<std::string> splitted = split(line, ':', 1);
+	std::vector<std::string> splitted = Utils::split(line, ':', 1);
 	if(splitted.size() != 2)
 		Logger::log("Error while parsing YAML file in: " + line, Logger::levels::critical);
 
