@@ -58,7 +58,7 @@ void fillNode(Node *node, std::string& line, int deep)
 	if(splitted.size() == 1)
 		splitted.push_back("");
 	if(splitted.size() != 2)
-		Logger::log("Error while parsing YAML file in: " + line, Logger::levels::critical);
+		Logger::log("Error while parsing file in: " + line, Logger::levels::critical);
 
 	std::string key = splitted[0];
 	std::string value = splitted[1];
@@ -82,6 +82,11 @@ bool Config::reload()
 	std::vector<std::string> lines = FileMgr::getFile(path);
 	for(std::string line : lines)
 	{
+		if (line == "")
+			continue;
+		if (line[0] == '#')
+			continue;
+
 		int newDeep = getDeep(line);
 
 		while(newDeep < deep)
