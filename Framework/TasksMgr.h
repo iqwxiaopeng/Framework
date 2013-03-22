@@ -40,7 +40,7 @@ private:
 public:
 	~TasksMgr();
 
-	// time - time passed since last tick
+	// time - time passed since last step
 	void step(float time);
 	TaskData* registerTask(functor funcPointer, float interval);
 	void removeTask(TaskData *td);
