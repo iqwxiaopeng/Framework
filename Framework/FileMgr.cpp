@@ -7,11 +7,11 @@
 #include <list>
 
 
-bool FileMgr::write(std::string path, std::string text)
+bool FileMgr::write(std::string path, std::string line)
 {
 	std::fstream file(path, std::ios::app);
 	if (file.good())
-		file << text;
+		file << line;
 	else
 	{
 		file.close();
@@ -20,6 +20,23 @@ bool FileMgr::write(std::string path, std::string text)
 	file.close();
 	return true;
 }
+
+
+bool FileMgr::write(std::string path, std::vector<std::string> lines)
+{
+	std::fstream file(path, std::ios::app);
+	if (file.good())
+		for(std::string line : lines)
+			file << line;
+	else
+	{
+		file.close();
+		return false;
+	}
+	file.close();
+	return true;
+}
+
 
 int FileMgr::search(std::string path, std::string _regex)
 {
@@ -59,4 +76,14 @@ std::vector<std::string> FileMgr::getFile(std::string path)
 		}
 
 		return lines;
+}
+
+
+bool FileMgr::clearFile(std::string path)
+{
+	bool ret = true;
+	std::fstream file(path, std::ios::trunc | std::ios::out);
+	if (!file.good())
+		ret = false;
+	return ret;
 }

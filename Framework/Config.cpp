@@ -41,12 +41,13 @@ int getDeep(std::string& line)
 	int deep = 0;
 	for(char c : line)
 	{
-		if(c != '	') // tab
+		if(c != '\t') // tab
 			break;
 		deep++;
 	}
 	return deep;
 }
+
 
 void fillNode(Node *node, std::string& line, int deep)
 {
@@ -103,26 +104,23 @@ bool Config::reload()
 }
 
 
+void nodeToString(Node *node, std::vector<std::string>& lines, std::string deep)
+{
+	lines.push_back(deep + node->toString() + "\n");
+	for(auto pair : node->nodes)
+		nodeToString(pair.second, lines, deep + "\t");
+}
+
+
 // Saves all values stored in root to file
 bool Config::save()
 {
-	/*
-	std::fstream file(path, std::ios::trunc | std::ios::out);
-	if (file.good())
-	{
-		std::string line;
+	if(!FileMgr::clearFile(path))
+		Logger::log("Cannot save config", Logger::levels::error);
 
-		for (values_map::iterator it = values.begin(); it != values.end(); ++it)
-		{
-			line = it->first;
-			line += "=" + it->second.as<std::string>();
-			file << line + "\n";			
-		}
-		file.flush();
-	}
-	else
-		std::cout << "Could not save config values to file";
-	*/
+	std::vector<std::string> lines;
+	for(auto pair : root->nodes)
+		nodeToString(pair.second, lines, "");
 
-	return true;
+	return FileMgr::write(path, lines);
 }

@@ -23,6 +23,7 @@ public:
 	bool save();
 	Node* get(std::string key); // returns node specified by key in config
 
+
 	// Checks if <path> is set in config; If no, create it
 	template <typename T>
 	void checkSet (std::string key, T value) {
