@@ -17,7 +17,7 @@ public:
 
 	std::string path; // path to config file
 	Node *root;
-
+	
 
 	bool reload();
 	bool save();

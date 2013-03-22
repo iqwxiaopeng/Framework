@@ -6,12 +6,13 @@
 
 #include <fstream>
 
-Config::Config(std::string filePath) : path(filePath)
+Config::Config(std::string filePath) : path(filePath), root(nullptr)
 {
 	std::fstream file(path, std::ios::app);
 	if (!file.good())
 		Logger::log("Could not open config file");
 	file.close();
+	reload();
 }
 
 
@@ -23,9 +24,8 @@ Config::~Config()
 
 Node* Config::get(std::string key)
 {
-	// TODO: move split to utils
-	std::vector<std::string> nodes = Utils::split(key, '.', 0);
-		
+	std::vector<std::string> nodes = Utils::split(key, '.');
+	
 	Node *node = root;
 	for(std::string n : nodes)
 		if (node->nodes.find(n) != node->nodes.end())
@@ -48,19 +48,24 @@ int getDeep(std::string& line)
 	return deep;
 }
 
-
-void fillNode(Node *n, std::string& line, int deep)
+void fillNode(Node *node, std::string& line, int deep)
 {
 	line = line.substr(deep); // to remove first tabs
 
-	// split(string, ':', 1); to separate the path and the value
-	std::vector<std::string> splitted = Utils::split(line, ':', 1);
+	std::vector<std::string> splitted = Utils::split(line, ':', 1); // to separate the path and the value
+
+	if(splitted.size() == 1)
+		splitted.push_back("");
 	if(splitted.size() != 2)
 		Logger::log("Error while parsing YAML file in: " + line, Logger::levels::critical);
 
 	std::string key = splitted[0];
 	std::string value = splitted[1];
-	*n = value;
+	if(value != "")
+		value = value.substr(1); // to remove first space
+	node->name = key;
+	node->value = value;
+	node->parent->nodes[key] = node;
 }
 
 
@@ -68,18 +73,28 @@ void fillNode(Node *n, std::string& line, int deep)
 bool Config::reload()
 {
 	delete root;
-	root = new Node(nullptr);
+	root = new Node(nullptr, "Do not cut");
+	root->parent = root;
 
 	Node *node = root;
-	int deep = 0;
+	int deep = -1;
 	std::vector<std::string> lines = FileMgr::getFile(path);
 	for(std::string line : lines)
 	{
 		int newDeep = getDeep(line);
-		if(newDeep > deep)
-			node = new Node(root);
+
 		while(newDeep < deep)
+		{
 			node = node->parent;
+			deep--;
+		}
+		if(newDeep > deep)
+		{
+			node = new Node(node);
+			deep++;
+		}
+		else if(newDeep == deep)
+			node = new Node(node->parent);
 
 		fillNode(node, line, deep);
 	}
@@ -91,12 +106,12 @@ bool Config::reload()
 // Saves all values stored in root to file
 bool Config::save()
 {
+	/*
 	std::fstream file(path, std::ios::trunc | std::ios::out);
 	if (file.good())
 	{
 		std::string line;
 
-		/*
 		for (values_map::iterator it = values.begin(); it != values.end(); ++it)
 		{
 			line = it->first;
@@ -104,10 +119,10 @@ bool Config::save()
 			file << line + "\n";			
 		}
 		file.flush();
-		*/
 	}
 	else
 		std::cout << "Could not save config values to file";
+	*/
 
 	return true;
 }
