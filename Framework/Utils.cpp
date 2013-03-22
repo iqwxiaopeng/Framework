@@ -35,7 +35,7 @@ std::string Utils::getTime()
 }
 
 
-std::vector<std::string>& Utils::split(const std::string &s, char delim, std::vector<std::string> &elems, int limit = INT_MAX)
+std::vector<std::string>& Utils::split(const std::string &s, char delim, std::vector<std::string> &elems, int limit)
 {
 	std::stringstream ss(s);
 	std::string item;
@@ -43,21 +43,14 @@ std::vector<std::string>& Utils::split(const std::string &s, char delim, std::ve
 	while(std::getline(ss, item, delim))
 	{
 		elems.push_back(item);
-		if(++i >= limit)
+		if(i++ >= limit)
 			break;
-	}
-
-	// TODO: maybe a better way? :D
-	while(std::getline(ss, item, ' '))
-	{
-		item = ' ' + item;
-		elems[elems.size()-1] += item;
 	}
 	return elems;
 }
 
 
-std::vector<std::string> Utils::split(const std::string& s, char delim, int limit = INT_MAX)
+std::vector<std::string> Utils::split(const std::string& s, char delim, int limit)
 {
 	std::vector<std::string> elems;
 	return split(s, delim, elems, limit);
