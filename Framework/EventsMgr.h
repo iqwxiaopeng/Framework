@@ -36,38 +36,47 @@ class EventsMgr
 			registerEvent<eventName> ((unsigned)type, std::bind(&callerClass::ptr, this, std::placeholders::_1, std::placeholders::_2))
 
 		template <typename EVENT_TYPE>
-		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr)
-		{
-			// Fit array size for new events
-			while(funcs.size() <= eventType)
-				funcs.push_back(new std::list<EventData>());
-
-			// Cast from std::function<void(EVENT_TYPE*)> 
-			// to		 std::function<void(   Event*  )>
-			// by casting to void* then to target (used in inappriopriate way may be dangerous)
-			functor fptr = *((functor*)((void*)(&funcPtr)));
-			EventData ed(eventType, fptr);
-			funcs[eventType]->push_back(ed); // Add event to list
-			funcs[eventType]->rbegin()->ptr = --funcs[eventType]->rbegin().base();
-			return &*funcs[eventType]->rbegin();
-		}
-
+		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr);
+		
 		void removeEvent(EventData* ed);
+
+		template <typename EVENT_TYPE>
+		void propagateEvent(const EVENT_TYPE &e);
 
 	private:
 		typedef std::function<void(const Event&, EventData*)> functor;
-		template <typename EVENT_TYPE>
-		void propagateEvent(const EVENT_TYPE &e)
-		{
-			// Iterate through all pointers for event and call them
-			if(funcs.size() > (unsigned)e.type)
-			{
-				std::list<EventData>* funcList = funcs[e.type];
-				for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next)
-				{
-					next++;
-					it->executor(e, &*it);
-				}
-			}
-		}
 };
+
+
+template <typename EVENT_TYPE>
+void EventsMgr::propagateEvent(const EVENT_TYPE &e)
+{
+	// Iterate through all pointers for event and call them
+	if(funcs.size() > (unsigned)e.type)
+	{
+		std::list<EventData>* funcList = funcs[e.type];
+		for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next)
+		{
+			next++;
+			it->executor(e, &*it);
+		}
+	}
+}
+
+
+template <typename EVENT_TYPE>
+EventData* EventsMgr::registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr)
+{
+	// Fit array size for new events
+	while(funcs.size() <= eventType)
+		funcs.push_back(new std::list<EventData>());
+
+	// Cast from std::function<void(EVENT_TYPE*)> 
+	// to		 std::function<void(   Event*  )>
+	// by casting to void* then to target (used in inappriopriate way may be dangerous)
+	functor fptr = *((functor*)((void*)(&funcPtr)));
+	EventData ed(eventType, fptr);
+	funcs[eventType]->push_back(ed); // Add event to list
+	funcs[eventType]->rbegin()->ptr = --funcs[eventType]->rbegin().base();
+	return &*funcs[eventType]->rbegin();
+}
