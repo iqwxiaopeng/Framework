@@ -35,4 +35,9 @@ public:
 		return *this;
 	}
 
+
+	std::string toString()
+	{
+		return name + ": " + value;
+	}
 };
