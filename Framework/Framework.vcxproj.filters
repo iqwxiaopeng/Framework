@@ -28,9 +28,6 @@
     <Filter Include="Tasks">
       <UniqueIdentifier>{01bca58e-31d9-4b4c-bcab-b4ad13dabf12}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{e3dc0d01-b08b-445e-ab57-9490c043b0d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{0d726f92-e0ed-48c3-8a37-9278fe5bcb16}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,12 @@
     </Filter>
     <Filter Include="Files\Logger">
       <UniqueIdentifier>{cbe7d6a6-8625-4c92-b442-8fb8bc69df34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{c9711ced-eae9-45d5-b822-ae1523ff2b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ResourcesMgr">
+      <UniqueIdentifier>{e3dc0d01-b08b-445e-ab57-9490c043b0d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +76,7 @@
       <Filter>Events</Filter>
     </ClInclude>
     <ClInclude Include="ResourcesMgr.h">
-      <Filter>Resources</Filter>
+      <Filter>ResourcesMgr</Filter>
     </ClInclude>
     <ClInclude Include="TasksMgr.h">
       <Filter>Tasks</Filter>
@@ -99,11 +102,11 @@
     <ClInclude Include="ParticleMaster.h">
       <Filter>Graphics\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="Logger.h">
       <Filter>Files\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +126,7 @@
       <Filter>Events</Filter>
     </ClCompile>
     <ClCompile Include="ResourcesMgr.cpp">
-      <Filter>Resources</Filter>
+      <Filter>ResourcesMgr</Filter>
     </ClCompile>
     <ClCompile Include="TasksMgr.cpp">
       <Filter>Tasks</Filter>
@@ -149,14 +152,14 @@
     <ClCompile Include="ParticleMaster.cpp">
       <Filter>Graphics\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>Files\Logger</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
     <ClCompile Include="PerlinNoise.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
