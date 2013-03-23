@@ -2,7 +2,7 @@
 #include "Displayable.h"
 #include "ResourcesMgr.h"
 
-Displayable::Displayable() :sprite(new sf::Sprite)
+Displayable::Displayable() : sprite(new sf::Sprite)
 {
 
 }
@@ -23,6 +23,5 @@ Displayable::~Displayable()
  */
 void Displayable::setSprite(std::string filename,ResourcesMgr *rMgr,bool resetRect)
 {
-	sf::Texture *test = rMgr->textures[filename];
 	sprite->setTexture(*rMgr->textures[filename],resetRect);
 }
