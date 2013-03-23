@@ -92,8 +92,6 @@ void Animation::render(sf::RenderWindow *pRW)
 
 void Animation::setPosition(int _x, int _y)
 {
-	x = _x;
-	y = _y;
 	sprite->setPosition((float)_x,(float)_y);
 }
 

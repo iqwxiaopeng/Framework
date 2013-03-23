@@ -17,9 +17,9 @@ Displayable::~Displayable()
 	delete sprite;
 }
 
-/*Set sprites texture to texture defined in provided ResourceManager.
- *It's only keeping reference to texture.
- *You can also reset origin and size of the rectangle defined in sprite by setting resetRect to true
+/* Set sprites texture to texture defined in provided ResourceManager.
+ * It's only keeping reference to texture.
+ * You can also reset origin and size of the rectangle defined in sprite by setting resetRect to true
  */
 void Displayable::setSprite(std::string filename,ResourcesMgr *rMgr,bool resetRect)
 {
