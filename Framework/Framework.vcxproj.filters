@@ -158,7 +158,7 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="PerlinNoise.cpp">
+    <ClCompile Include="Noise.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

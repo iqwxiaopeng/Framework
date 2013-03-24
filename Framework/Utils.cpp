@@ -35,6 +35,18 @@ std::string Utils::getTime()
 }
 
 
+sf::Color Utils::lerp(sf::Color first, sf::Color second, float value)
+{
+	typedef unsigned __int8 _uint8;
+	return sf::Color((_uint8)(first.r + ((float)(second.r - first.r) * value)),
+					 (_uint8)(first.g + ((float)(second.g - first.g) * value)),
+					 (_uint8)(first.b + ((float)(second.b - first.b) * value)),
+					 (_uint8)(first.a + ((float)(second.a - first.a) * value)));
+	// TODO: unreachable!!!
+	if(value > 1.0f)value = 1.f;
+}
+
+
 std::vector<std::string>& Utils::split(const std::string &s, char delim, std::vector<std::string> &elems, int limit)
 {
 	std::stringstream ss(s);

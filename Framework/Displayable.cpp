@@ -21,7 +21,7 @@ Displayable::~Displayable()
  * It's only keeping reference to texture.
  * You can also reset origin and size of the rectangle defined in sprite by setting resetRect to true
  */
-void Displayable::setSprite(std::string filename,ResourcesMgr *rMgr,bool resetRect)
+void Displayable::setSprite(std::string filename, ResourcesMgr *rMgr, bool resetRect)
 {
-	sprite->setTexture(*rMgr->textures[filename],resetRect);
+	sprite->setTexture(*rMgr->textures[filename], resetRect);
 }

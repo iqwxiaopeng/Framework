@@ -42,6 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>E:\code\libs\</OutDir>
     <TargetName>$(ProjectName)-d</TargetName>
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>E:\code\libs</OutDir>
@@ -127,7 +128,7 @@
     <ClCompile Include="ParticleGun.cpp" />
     <ClCompile Include="ParticleMaster.cpp" />
     <ClCompile Include="ParticleState.cpp" />
-    <ClCompile Include="PerlinNoise.cpp" />
+    <ClCompile Include="Noise.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

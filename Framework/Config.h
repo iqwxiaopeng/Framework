@@ -44,7 +44,7 @@ public:
 	}
 
 
-	Node& operator[](const std::string key) {
+	Node& operator[](const std::string& key) {
 		return *get(key);
 	}
 };

@@ -1,16 +1,20 @@
 #include "stdafx.h"
 #include <math.h>
-typedef unsigned int uint;
+
+#include "Utils.h"
+
 
 inline float Perlin_Fade(float t)
 {
 	return t * t * t * (t * (t * 6 - 15) + 10);
 }
 
+
 inline float Perlin_Lerp(float t, float a, float b)
 {
 	return a + t * (b - a);
 }
+
 
 inline float Perlin_Grad2(int hash, float x, float y)
 {
@@ -19,6 +23,7 @@ inline float Perlin_Grad2(int hash, float x, float y)
 	float u = h<8 ? x : y, v = h<4 ? y : h==12||h==14 ? x : 0.f;
 	return ((h&1) == 0 ? u : -u) + ((h&2) == 0 ? v : -v);
 }
+
 
 int Perlin_P[] = {
 	151,160,137,91,90,15,
@@ -52,18 +57,21 @@ int Perlin_P[] = {
 
 
 
-float PerlinNoise2(float x, float y)
+float Utils::PerlinNoise2(float x, float y)
 {
 	
 	// Find unit cube that contains point
 	int X = (int)x & 255;
 	int Y = (int)y & 255;
+
 	// Find relative x,y,z of point in cube
 	x -= floorf(x);
 	y -= floorf(y);
+
 	// Compute Perlin_Fade curves for each x,y,z
 	float u = Perlin_Fade(x);
 	float v = Perlin_Fade(y);
+
 	// Hash coordinates of the 8 cube corners
 	int A = Perlin_P[X  ]+Y, AA = Perlin_P[A], AB = Perlin_P[A+1];
 	int B = Perlin_P[X+1]+Y, BA = Perlin_P[B], BB = Perlin_P[B+1];
@@ -79,11 +87,11 @@ float PerlinNoise2(float x, float y)
 }
 
 
-float BrownianNoise2(float x, float y, uint i, float Persistence)
+float Utils::BrownianNoise2(float x, float y, unsigned int i, float Persistence)
 {
 	float R = 0.f;
 	float Frequency = 1.f, Amplitude = 1.f;
-	for (uint j = 0; j < i; j++)
+	for (unsigned int j = 0; j < i; j++)
 	{
 		R += PerlinNoise2(x * Frequency, y * Frequency) * Amplitude;
 		Frequency *= 2.f;
