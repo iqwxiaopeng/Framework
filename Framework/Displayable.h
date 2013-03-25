@@ -1,12 +1,15 @@
 #pragma once
+
 class ResourcesMgr;
+
 #include <SFML\Graphics.hpp>
 
 class Displayable
 {
 	public:
+		Displayable(std::string texture, ResourcesMgr *pRM);
 		Displayable(sf::Sprite *);
-		Displayable();
+		//Displayable();
 		virtual ~Displayable();
 		sf::Sprite *sprite;
 

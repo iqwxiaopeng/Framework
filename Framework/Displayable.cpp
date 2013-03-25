@@ -2,15 +2,17 @@
 #include "Displayable.h"
 #include "ResourcesMgr.h"
 
-Displayable::Displayable() : sprite(new sf::Sprite)
+Displayable::Displayable(std::string texture, ResourcesMgr *pRM) : sprite(new sf::Sprite)
 {
-
+	setSprite(texture, pRM);
 }
 
 
 Displayable::Displayable(sf::Sprite *_sprite) : sprite(_sprite)
 {
 }
+
+//Displayable::Displayable() : sprite(new sf::Sprite) {}
 
 Displayable::~Displayable()
 {
@@ -24,4 +26,7 @@ Displayable::~Displayable()
 void Displayable::setSprite(std::string filename, ResourcesMgr *rMgr, bool resetRect)
 {
 	sprite->setTexture(*rMgr->textures[filename], resetRect);
+
+	sf::FloatRect bounds = sprite->getLocalBounds();
+	sprite->setOrigin((float)bounds.width / 2.f,(float)bounds.height / 2.f);
 }
