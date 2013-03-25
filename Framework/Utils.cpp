@@ -38,12 +38,13 @@ std::string Utils::getTime()
 sf::Color Utils::lerp(sf::Color first, sf::Color second, float value)
 {
 	typedef unsigned __int8 _uint8;
+	if(value > 1.f)value = 1.f;
+	else if(value < 0.f) value = 0.f;
+
 	return sf::Color((_uint8)(first.r + ((float)(second.r - first.r) * value)),
 					 (_uint8)(first.g + ((float)(second.g - first.g) * value)),
 					 (_uint8)(first.b + ((float)(second.b - first.b) * value)),
 					 (_uint8)(first.a + ((float)(second.a - first.a) * value)));
-	// TODO: unreachable!!!
-	if(value > 1.0f)value = 1.f;
 }
 
 
