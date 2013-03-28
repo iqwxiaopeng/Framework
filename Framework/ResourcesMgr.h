@@ -12,11 +12,12 @@ class ResourcesMgr
 		std::unordered_map<std::string, sf::Texture*> textures;
 
 		void addTexture(std::string name);
+		void addTexture(std::string name, std::string filename);
 
 		ResourcesMgr();
 		~ResourcesMgr();
 	private:
 		sf::Texture* getTexture(std::string filename);
-		void addObject(std::unordered_map<std::string, sf::Texture*>& map, std::string name);
+		void addObject(std::unordered_map<std::string, sf::Texture*>& map, std::string filename, std::string name);
 };
 
