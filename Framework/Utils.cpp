@@ -69,7 +69,14 @@ std::vector<std::string> Utils::split(const std::string& s, char delim, int limi
 	return split(s, delim, elems, limit);
 }
 
+
 float Utils::distance(float x1, float y1, float x2, float y2)
 {
 	return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
+}
+
+
+int round(float number)
+{
+    return number < 0.0 ? ceil(number - 0.5) : floor(number + 0.5);
 }
