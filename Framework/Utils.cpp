@@ -78,5 +78,5 @@ float Utils::distance(float x1, float y1, float x2, float y2)
 
 int round(float number)
 {
-    return number < 0.0 ? ceil(number - 0.5) : floor(number + 0.5);
+    return (int)(number < 0.0 ? ceil(number - 0.5) : floor(number + 0.5));
 }

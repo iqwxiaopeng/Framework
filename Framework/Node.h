@@ -1,6 +1,7 @@
 #pragma once
 
 #include "boost\lexical_cast.hpp"
+#include "Utils.h"
 
 class Node
 {
@@ -39,5 +40,23 @@ public:
 	std::string toString()
 	{
 		return name + ": " + value;
+	}
+
+
+	Node* get(std::string key) // returns node specified by key
+	{
+		std::vector<std::string> nodes = Utils::split(key, '.');
+	
+		Node *node = this;
+		for(std::string n : nodes)
+			if (node->nodes.find(n) != node->nodes.end())
+				node = node->nodes[n];
+			else
+				return nullptr;
+		return node;
+	}
+
+	Node& operator[](const std::string& key) {
+		return *get(key);
 	}
 };
