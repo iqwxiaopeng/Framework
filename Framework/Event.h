@@ -27,6 +27,7 @@ public:
 	void propagate(EventsMgr *pEM);
 	
 private:
+	// DO NOT IMPLEMENT
 	Event(const Event&);
 	Event& operator=(const Event&);
 };
