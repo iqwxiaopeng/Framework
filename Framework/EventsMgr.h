@@ -40,7 +40,6 @@ class EventsMgr
 		
 		/**Function removes event from event manager but does not destroy the array
 		  * @param is used to specify which event remove from the list
-		  * @author : shoter
 		  */
 		void removeEvent(EventData* ed);
 
