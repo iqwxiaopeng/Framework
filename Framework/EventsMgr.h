@@ -38,7 +38,7 @@ class EventsMgr
 		template <typename EVENT_TYPE>
 		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr);
 		
-		/**Function removes event from event manager but does not destroy the array
+		/** Function removes event from event manager but does not destroy the array
 		  * @param is used to specify which event remove from the list
 		  */
 		void removeEvent(EventData* ed);
