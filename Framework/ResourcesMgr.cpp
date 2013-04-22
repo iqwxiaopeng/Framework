@@ -22,19 +22,9 @@ sf::Texture* ResourcesMgr::getTexture(std::string filename)
 }
 
 
-void ResourcesMgr::addObject(std::unordered_map<std::string, sf::Texture*>& map, std::string name, std::string filename)
-{
-	map.insert(std::make_pair(name, getTexture(filename)));
-}
-
-
 void ResourcesMgr::addTexture(std::string name)
-{
-	addObject(this->textures, name, name);
-}
-
-
+{ addTexture(name, name); }
 void ResourcesMgr::addTexture(std::string name, std::string filename)
 {
-	addObject(this->textures, name, filename);
+	addObject(textures, name, getTexture(filename));
 }
