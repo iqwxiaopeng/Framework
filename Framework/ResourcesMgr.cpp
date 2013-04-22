@@ -11,28 +11,33 @@ ResourcesMgr::~ResourcesMgr()
 {
 	for(auto texture : textures)
 		delete texture.second;
+	for(auto image : images)
+		delete image.second;
 }
 
 
 sf::Texture* ResourcesMgr::getTexture(std::string name)
 {
-	if(textures.find(name) == textures.end())
-		return nullptr;
-	return textures.at(name);
+	return get<sf::Texture*>(textures, name);
 }
 
 
-sf::Texture* ResourcesMgr::loadTexture(std::string filename)
+sf::Image* ResourcesMgr::getImage(std::string name)
 {
-	sf::Texture *t = new sf::Texture();
-	t->loadFromFile("GFX\\" + filename);
-	return t;
+	return get<sf::Image*>(images, name);
 }
 
 
-void ResourcesMgr::addTexture(std::string name)
-{ addTexture(name, name); }
-void ResourcesMgr::addTexture(std::string name, std::string filename)
+void ResourcesMgr::addTextureAndImage(std::string name)
+{ addTextureAndImage(name, name); }
+void ResourcesMgr::addTextureAndImage(std::string name, std::string filename)
 {
-	addObject(textures, name, loadTexture(filename));
+	sf::Texture *texture = new sf::Texture();
+	texture->loadFromFile("GFX\\" + filename);
+
+	sf::Image *image = new sf::Image();
+	image->loadFromFile("GFX\\" + filename);
+
+	addObject(textures, name, texture);
+	addObject(images  , name, image);
 }
