@@ -14,6 +14,8 @@ class ResourcesMgr
 		ResourcesMgr();
 		~ResourcesMgr();
 
+
+		sf::Texture* getTexture(std::string name);
 		void addTexture(std::string name);
 		/**
 		 * Adds texture to textures map
@@ -22,7 +24,7 @@ class ResourcesMgr
 		 */
 		void addTexture(std::string name, std::string filename);
 	private:
-		sf::Texture* getTexture(std::string filename);
+		sf::Texture* loadTexture(std::string filename);
 		
 		template<typename mapType, typename objectType>
 
