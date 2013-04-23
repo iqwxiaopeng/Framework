@@ -35,7 +35,7 @@ std::string Utils::getTime()
 }
 
 
-sf::Color Utils::lerp(sf::Color first, sf::Color second, float value)
+sf::Color Utils::lerp(const sf::Color& first, const sf::Color& second, float value)
 {
 	typedef unsigned __int8 _uint8;
 	if(value > 1.f)value = 1.f;
@@ -70,13 +70,22 @@ std::vector<std::string> Utils::split(const std::string& s, char delim, int limi
 }
 
 
-float Utils::distance(float x1, float y1, float x2, float y2)
+float Utils::distance(const float& x1, const float& y1, const float& x2, const float& y2)
 {
 	return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
 }
 
 
-int round(float number)
+int Utils::round(const float& number)
 {
     return (int)(number < 0.0 ? ceil(number - 0.5) : floor(number + 0.5));
 }
+
+bool Utils::collision(const sf::IntRect& first, const sf::IntRect& second)
+{
+	if(first.left + first.width >= second.left  && first.left <= second.left + second.width &&
+	   first.top  + first.height >= second.top  && first.top  <= second.top + second.height)
+		return true;
+	return false;
+}
+

@@ -21,9 +21,10 @@ public:
 	// Utils.cpp
 	static std::string getTime();
 	static std::vector<std::string> split(const std::string& s, char delim, int limit = INT_MAX);
-	static sf::Color lerp(sf::Color first, sf::Color second, float value);
-	static float distance(float x1, float y1, float x2, float y2);
-	static int round(float number);
+	static sf::Color lerp(const sf::Color& first, const sf::Color& second, float value);
+	static float distance(const float& x1, const float& y1, const float& x2, const float& y2);
+	static int round(const float& number);
+	static bool collision(const sf::IntRect &, const sf::IntRect &);
 
 private:
 	static std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems, int limit = INT_MAX);
