@@ -23,6 +23,8 @@ class EventData
 
 class EventsMgr
 {
+private:
+	typedef std::function<void(const Event&, EventData*)> functor;
 	friend class Event; // Event can access to propagateEvent()
 
 	public:
@@ -37,49 +39,22 @@ class EventsMgr
 
 		template <typename EVENT_TYPE>
 		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr);
+		EventData* registerEvent(unsigned eventType, functor funcPtr);
 		
 		/** Function removes event from event manager but does not destroy the array
 		  * @param is used to specify which event remove from the list
 		  */
 		void removeEvent(EventData* ed);
-
-		template <typename EVENT_TYPE>
-		void propagateEvent(const EVENT_TYPE &e);
-
-	private:
-		typedef std::function<void(const Event&, EventData*)> functor;
+		void propagateEvent(const Event &e);
 };
-
-
-template <typename EVENT_TYPE>
-void EventsMgr::propagateEvent(const EVENT_TYPE &e)
-{
-	// Iterate through all pointers for event and call them
-	if(funcs.size() > (unsigned)e.type)
-	{
-		std::list<EventData>* funcList = funcs[e.type];
-		for(auto it = funcList->begin(), next = it; it != funcList->end(); it = next)
-		{
-			next++;
-			it->executor(e, &*it);
-		}
-	}
-}
 
 
 template <typename EVENT_TYPE>
 EventData* EventsMgr::registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr)
 {
-	// Fit array size for new events
-	while(funcs.size() <= eventType)
-		funcs.push_back(new std::list<EventData>());
-
-	// Cast from std::function<void(EVENT_TYPE*)> 
-	// to		 std::function<void(   Event*  )>
+	// Cast from std::function<void(EVENT_TYPE&, EventData*)> 
+	// to		 std::function<void(   Event&  , EventData*)>
 	// by casting to void* then to target (used in inappriopriate way may be dangerous)
 	functor fptr = *((functor*)((void*)(&funcPtr)));
-	EventData ed(eventType, fptr);
-	funcs[eventType]->push_back(ed); // Add event to list
-	funcs[eventType]->rbegin()->ptr = --funcs[eventType]->rbegin().base();
-	return &*funcs[eventType]->rbegin();
+	return registerEvent(eventType, fptr);
 }
