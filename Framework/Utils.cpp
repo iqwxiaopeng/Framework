@@ -83,9 +83,6 @@ int Utils::round(const float& number)
 
 bool Utils::collision(const sf::IntRect& first, const sf::IntRect& second)
 {
-	if(first.left + first.width >= second.left  && first.left <= second.left + second.width &&
-	   first.top  + first.height >= second.top  && first.top  <= second.top + second.height)
-		return true;
-	return false;
+	return first.intersects(second);
 }
 
