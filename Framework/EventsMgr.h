@@ -37,6 +37,12 @@ private:
 		#define registerEventMacroForClass(eventName, type, ptr, callerClass) \
 			registerEvent<eventName> ((unsigned)type, std::bind(&callerClass::ptr, this, std::placeholders::_1, std::placeholders::_2))
 
+		template<class Class, class EVENT_TYPE>
+		EventData* registerEventForClass(unsigned eventType, void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object)
+		{
+			registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
+		}
+
 		template <typename EVENT_TYPE>
 		EventData* registerEvent(unsigned eventType, std::function<void(const EVENT_TYPE&, EventData*)> funcPtr);
 		EventData* registerEvent(unsigned eventType, functor funcPtr);
