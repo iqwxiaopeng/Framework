@@ -125,6 +125,7 @@
     <ClCompile Include="EventsMgr.cpp" />
     <ClCompile Include="FileMgr.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleGun.cpp" />
     <ClCompile Include="ParticleMaster.cpp" />

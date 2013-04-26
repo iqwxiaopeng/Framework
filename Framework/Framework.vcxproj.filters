@@ -161,6 +161,9 @@
     <ClCompile Include="Noise.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Files\Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">
