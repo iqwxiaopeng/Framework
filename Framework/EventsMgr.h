@@ -40,7 +40,7 @@ private:
 		template<class Class, class EVENT_TYPE>
 		EventData* registerEventForClass(unsigned eventType, void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object)
 		{
-			registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
+			return registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
 		}
 
 		template <typename EVENT_TYPE>
