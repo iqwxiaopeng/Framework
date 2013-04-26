@@ -32,15 +32,10 @@ private:
 
 		std::vector<std::list<EventData>*> funcs; // List of events
 
-		#define registerEventMacro(eventName, type, ptr) \
-			registerEvent<eventName> ((unsigned)type, std::bind(&ptr, std::placeholders::_1, std::placeholders::_2))
-		#define registerEventMacroForClass(eventName, type, ptr, callerClass) \
-			registerEvent<eventName> ((unsigned)type, std::bind(&callerClass::ptr, this, std::placeholders::_1, std::placeholders::_2))
-
 		template<class Class, class EVENT_TYPE>
-		EventData* registerEventForClass(unsigned eventType, void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object)
+		EventData* registerEventForClass(void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object)
 		{
-			return registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
+			return registerEvent<EVENT_TYPE>(EVENT_TYPE::getType(), std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
 		}
 
 		template <typename EVENT_TYPE>

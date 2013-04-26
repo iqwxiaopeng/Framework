@@ -3,7 +3,7 @@
 #include "Event.h"
 #include "EventsMgr.h"
 
-Event::Event(int _type) : result(EventResults::DEFAULT), type(_type)
+Event::Event(unsigned _type) : type(_type), result(EventResults::DEFAULT)
 {}
 
 // allow event

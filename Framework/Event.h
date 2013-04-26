@@ -15,10 +15,10 @@ class EventsMgr;
 class Event
 {
 public:
-	Event(int _type);
+	Event(unsigned _type);
 
 	EventResults::result result;
-	int type;
+	unsigned type;
 
 	void allow(); // allow event
 	void deny(); // deny event
