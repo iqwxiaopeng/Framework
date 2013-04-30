@@ -33,12 +33,12 @@ public:
 	std::vector<std::list<EventData>*> funcs; // List of events
 
 	template<class Class, class EVENT_TYPE>
-	EventData* registerEventForClass(void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object, unsigned eventType = EVENT_TYPE::getType())
+	EventData* registerEvent(void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object, unsigned eventType = EVENT_TYPE::getType())
 	{
 		return registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, object, std::placeholders::_1, std::placeholders::_2));
 	}
 	template<class EVENT_TYPE>
-	EventData* registerEventForFunction(void(*functionPointer)(const EVENT_TYPE&, EventData*), unsigned eventType = EVENT_TYPE::getType())
+	EventData* registerEvent(void(*functionPointer)(const EVENT_TYPE&, EventData*), unsigned eventType = EVENT_TYPE::getType())
 	{
 		return registerEvent<EVENT_TYPE>(eventType, std::bind(functionPointer, std::placeholders::_1, std::placeholders::_2));
 	}
