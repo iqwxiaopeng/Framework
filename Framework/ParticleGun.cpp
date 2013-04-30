@@ -71,10 +71,10 @@ void ParticleGun::setPosition(float _x,float _y)
 
 void ParticleGun::setDeathTime(TasksMgr *taskMgr,float time)
 {
-	deathTask = taskMgr->registerTask(std::bind(&ParticleGun::death,this),time);
+	deathTask = taskMgr->registerTask(&ParticleGun::death, this, time);
 }
 
-void ParticleGun::death()
+void ParticleGun::death(TaskData*)
 {
 	isDead = true;
 }

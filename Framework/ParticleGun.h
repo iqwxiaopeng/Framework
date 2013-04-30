@@ -35,7 +35,7 @@ public:
 
 	//Death
 	void setDeathTime(TasksMgr *taskMgr, float time);
-	void death();
+	void death(TaskData*);
 
 
 protected:

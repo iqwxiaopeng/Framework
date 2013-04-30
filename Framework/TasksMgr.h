@@ -42,7 +42,18 @@ public:
 
 	// time - time passed since last step
 	void step(float time);
+
+	template<class Class>
+	TaskData* registerTask(void(Class::*functionPointer)(TaskData*), Class* object, float interval)
+	{
+		return registerTask(std::bind(functionPointer, object, std::placeholders::_1), interval);
+	}
+	TaskData* registerTask(void(*functionPointer)(TaskData*), float interval)
+	{
+		return registerTask(std::bind(functionPointer, std::placeholders::_1), interval);
+	}
 	TaskData* registerTask(functor funcPointer, float interval);
+
 	void removeTask(TaskData *td);
 
 private:
