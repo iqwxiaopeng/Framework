@@ -2,6 +2,7 @@
 
 #include "TasksMgr.h"
 
+
 TasksMgr::~TasksMgr() 
 {
 	for(auto it : tasks)
@@ -11,9 +12,12 @@ TasksMgr::~TasksMgr()
 	}
 }
 
+
 void TasksMgr::step(float time)
 {
 	// get through all registered tasks
+	// Don't make this for loop "for(auto it : tasks)" 
+	// because the vector we are looping over may reallocate causing iterator to invalidate. So just use this "old" but WORKING way ;)
 	for(int i = 0; i < tasks.size(); ++i)
 	{
 		auto it = tasks[i];
@@ -32,6 +36,7 @@ void TasksMgr::step(float time)
 			it.first->time -= time;
 	}
 }
+
 
 TaskData* TasksMgr::registerTask(functor funcPointer, float interval)
 {
@@ -60,6 +65,7 @@ TaskData* TasksMgr::registerTask(functor funcPointer, float interval)
 	datait->ptr = datait;
 	return &*datait;
 }
+
 
 void TasksMgr::removeTask(TaskData *td)
 {
