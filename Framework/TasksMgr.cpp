@@ -14,8 +14,10 @@ TasksMgr::~TasksMgr()
 void TasksMgr::step(float time)
 {
 	// get through all registered tasks
-	for(auto it : tasks)
+	for(int i = 0; i < tasks.size(); ++i)
 	{
+		auto it = tasks[i];
+
 		if (time >= it.first->time) // has time passed limit?
 		{
 			it.first->time = it.first->interval; // reset counter
