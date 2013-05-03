@@ -38,6 +38,8 @@ void ResourcesMgr::addTextureAndImage(std::string name, std::string filename)
 	sf::Image *image = new sf::Image();
 	image->loadFromFile("GFX\\" + filename);
 
-	addObject(textures, name, texture);
-	addObject(images  , name, image);
+	if(!addObject(textures, name, texture))
+		delete texture;
+	if(!addObject(images  , name, image))
+		delete image;
 }
