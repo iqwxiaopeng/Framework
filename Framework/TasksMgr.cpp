@@ -18,7 +18,7 @@ void TasksMgr::step(float time)
 	// get through all registered tasks
 	// Don't make this for loop "for(auto it : tasks)" 
 	// because the vector we are looping over may reallocate causing iterator to invalidate. So just use this "old" but WORKING way ;)
-	for(int i = 0; i < tasks.size(); ++i)
+	for(unsigned i = 0; i < tasks.size(); ++i)
 	{
 		auto it = tasks[i];
 

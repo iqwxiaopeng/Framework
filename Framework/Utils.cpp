@@ -72,7 +72,7 @@ std::vector<std::string> Utils::split(const std::string& s, char delim, int limi
 
 float Utils::distance(const float& x1, const float& y1, const float& x2, const float& y2)
 {
-	return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
+	return sqrtf(powf(x2-x1, 2) + powf(y2-y1, 2));
 }
 
 
