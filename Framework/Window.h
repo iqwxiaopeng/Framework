@@ -20,6 +20,7 @@ public:
 	/* *There are performed operations that deactivate members of window that needs deactivation.
 	   *For example GUI
 	   */
+	virtual void activate() = 0;
 	virtual void deactivate() = 0;
 
 	sf::Vector2f getMousePos(const sf::RenderWindow& App) const;
