@@ -5,7 +5,7 @@
 #include "FileMgr.h"
 #include "Utils.h"
 
-void Logger::log(std::string text, int level, std::string fileName)
+void Logger::log(std::string text, Logger::levels::logLevels level, std::string fileName)
 {
 	//			log = y.m.d h:m:s [level] log_text
 	std::string log = Utils::getTime();

@@ -13,7 +13,7 @@ public:
 		};
 	};
 
-	static void log(std::string Text, int level = levels::info, std::string fileName = "log.txt");
+	static void log(std::string Text, Logger::levels::logLevels level = levels::info, std::string fileName = "log.txt");
 
 private:
 	Logger();
