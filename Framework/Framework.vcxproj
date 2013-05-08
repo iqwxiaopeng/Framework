@@ -94,6 +94,9 @@
     <Lib>
       <AdditionalLibraryDirectories>E:\code\libs</AdditionalLibraryDirectories>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)*.h E:\code\includes\Framework /S /I /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
