@@ -84,7 +84,7 @@ float Utils::distanceSquared(const float& x1, const float& y1, const float& x2, 
 
 float Utils::distanceSquared(const int& x1, const int& y1, const int& x2, const int& y2)
 {
-	return _Pow_int(x2-x1, 2) + _Pow_int(y2-y1, 2);
+	return (float) ( _Pow_int(x2-x1, 2) + _Pow_int(y2-y1, 2) );
 }
 
 
