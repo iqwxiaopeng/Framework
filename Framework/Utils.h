@@ -27,6 +27,7 @@ public:
 	static std::string	getTime();
 	static sf::Color	lerp(const sf::Color& first, const sf::Color& second, float value);
 	static std::vector<std::string> split(const std::string& s, char delim, int limit = INT_MAX);
+
 	template<typename CONTAINER, typename WHAT>
 	static bool contains(WHAT what, CONTAINER container);
 
