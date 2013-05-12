@@ -16,6 +16,8 @@ class Event
 {
 public:
 	Event(unsigned _type);
+	virtual ~Event() {}
+	
 
 	EventResults::result result;
 	unsigned type;
