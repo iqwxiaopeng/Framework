@@ -27,10 +27,10 @@ private:
 	typedef std::function<void(const Event&, EventData*)> functor;
 	friend class Event; // Event can access to propagateEvent()
 
+	std::vector<std::list<EventData>*> funcs; // List of events
+
 public:
 	~EventsMgr();
-
-	std::vector<std::list<EventData>*> funcs; // List of events
 
 	template<class Class, class EVENT_TYPE>
 	EventData* registerEvent(void(Class::*functionPointer)(const EVENT_TYPE&, EventData*), Class* object, unsigned eventType = EVENT_TYPE::getType())

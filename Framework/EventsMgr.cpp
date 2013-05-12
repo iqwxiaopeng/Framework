@@ -8,6 +8,7 @@ EventsMgr::~EventsMgr()
 		delete it; // std::list<EventData>*
 }
 
+
 void EventsMgr::removeEvent(EventData* ed)
 {
 	funcs[ed->eventType]->erase(ed->ptr);
