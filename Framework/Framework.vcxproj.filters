@@ -123,6 +123,15 @@
     <ClInclude Include="TaskTimer.h">
       <Filter>Tasks</Filter>
     </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -184,6 +193,15 @@
     </ClCompile>
     <ClCompile Include="EventsVector.cpp">
       <Filter>Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Containers.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

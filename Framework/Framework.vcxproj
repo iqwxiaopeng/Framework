@@ -104,6 +104,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Containers.h" />
     <ClInclude Include="Displayable.h" />
     <ClInclude Include="EmptyWindow.h" />
     <ClInclude Include="Event.h" />
@@ -112,7 +113,9 @@
     <ClInclude Include="EventsVector.h" />
     <ClInclude Include="FileMgr.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="TaskData.h" />
     <ClInclude Include="TasksVector.h" />
     <ClInclude Include="TaskTimer.h" />
@@ -129,18 +132,21 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Containers.cpp" />
     <ClCompile Include="Displayable.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventsMgr.cpp" />
     <ClCompile Include="EventsVector.cpp" />
     <ClCompile Include="FileMgr.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleGun.cpp" />
     <ClCompile Include="ParticleMaster.cpp" />
     <ClCompile Include="ParticleState.cpp" />
     <ClCompile Include="Noise.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="ResourcesMgr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

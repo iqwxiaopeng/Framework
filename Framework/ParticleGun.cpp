@@ -42,7 +42,7 @@ void ParticleGun::step(ParticleMaster *pM)
 			
 			for(unsigned int x = 0;x < particleChain.size();x++)
 			{
-				float value = (float)(Utils::GetRandom() % 100) / 100.f;
+				float value = (float)(Utils::getRandom() % 100) / 100.f;
 
 				ParticleState *nowy = new ParticleState(
 					ParticleState::lerp(particleChain[x].min,particleChain[x].max,value));
