@@ -3,21 +3,40 @@
 
 #include "TasksMgr.h"
 
+#include "Utils.h"
+
 TasksVector::TasksVector(TasksMgr* TM)
     :
-    std::vector<TaskData*>(),
     m_TM(TM)
 {
 }
 
 TasksVector::~TasksVector()
 {
-    for(auto TD : *this)
-        m_TM->removeTask(TD);
+	clear();
 }
 
 
 void TasksVector::addTask(TaskData *TD)
 {
-    push_back(TD);
+    container.push_back(TD);
+}
+
+
+void TasksVector::removeTask(TaskData *TD)
+{
+	for(auto it = container.begin(); it != container.end(); ++it)
+		if(TD == *it)
+		{
+			container.erase(it);
+			break;
+		}
+}
+
+
+void TasksVector::clear()
+{
+	for(auto TD : container)
+        m_TM->removeTask(TD);
+	container.clear();
 }

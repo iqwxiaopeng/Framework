@@ -3,21 +3,40 @@
 
 #include "EventsMgr.h"
 
+#include "Utils.h"
+
 EventsVector::EventsVector(EventsMgr* EM)
     :
-    std::vector<EventData*>(),
     m_EM(EM)
 {
 }
 
 EventsVector::~EventsVector()
 {
-    for(auto ED : *this)
-		m_EM->removeEvent(ED);
+	clear();
 }
 
 
 void EventsVector::addEvent(EventData *ED)
 {
-    push_back(ED);
+    container.push_back(ED);
+}
+
+
+void EventsVector::removeEvent(EventData *ED)
+{
+	for(auto it = container.begin(); it != container.end(); ++it)
+		if(ED == *it)
+		{
+			container.erase(it);
+			break;
+		}
+}
+
+
+void EventsVector::clear()
+{
+	for(auto ED : container)
+		m_EM->removeEvent(ED);
+	container.clear();
 }
