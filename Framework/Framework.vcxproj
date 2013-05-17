@@ -107,10 +107,15 @@
     <ClInclude Include="Displayable.h" />
     <ClInclude Include="EmptyWindow.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="EventData.h" />
     <ClInclude Include="EventsMgr.h" />
+    <ClInclude Include="EventsVector.h" />
     <ClInclude Include="FileMgr.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="TaskData.h" />
+    <ClInclude Include="TasksVector.h" />
+    <ClInclude Include="TaskTimer.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleGun.h" />
@@ -127,6 +132,7 @@
     <ClCompile Include="Displayable.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventsMgr.cpp" />
+    <ClCompile Include="EventsVector.cpp" />
     <ClCompile Include="FileMgr.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -141,6 +147,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TasksMgr.cpp" />
+    <ClCompile Include="TasksVector.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

@@ -1,33 +1,12 @@
 #pragma once
 #include <vector>
-#include <list>
 #include <functional>
+#include <list>
 
-class TaskTimer
-{
-public:
-	TaskTimer(float _interval, float _time) : interval(_interval), time(_time)
-	{}
+#include "TaskData.h"
+#include "TaskTimer.h"
+#include "TasksVector.h"
 
-	float interval; // how much time to wait before run the task
-	float time; // how much time passed
-};
-
-class TaskData
-{
-private:
-	typedef std::function<void(TaskData*)> functor;
-	typedef std::list<TaskData>* funcs;
-	TaskData(float _interval, functor _executor) : interval(_interval), executor(_executor)
-	{}
-
-	funcs listPtr;
-	std::list<TaskData>::iterator ptr;
-	float interval;
-	functor executor;
-
-	friend class TasksMgr; // Only Tasks needs using this...
-};
 
 class TasksMgr
 {

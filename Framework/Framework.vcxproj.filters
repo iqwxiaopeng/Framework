@@ -108,6 +108,21 @@
     <ClInclude Include="Utils.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="TasksVector.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="EventsVector.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskData.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="EventData.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskTimer.h">
+      <Filter>Tasks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -163,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Files\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="TasksVector.cpp">
+      <Filter>Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="EventsVector.cpp">
+      <Filter>Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
