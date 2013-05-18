@@ -8,6 +8,7 @@
 namespace Utils
 {
 	int getRandom();
+	float fRandom();
 
 	// Noise.cpp
 	float BrownianNoise2(float x, float y, unsigned int i, float Persistence);

@@ -10,6 +10,13 @@ int Utils::getRandom()
 	return rand();
 }
 
+
+float Utils::fRandom()
+{
+	return (float)rand() / (float)RAND_MAX;
+}
+
+
 std::string Utils::getTime()
 {
 	std::string stime = "";
