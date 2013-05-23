@@ -6,8 +6,10 @@
 
 class EventData
 {
+	public:
+		typedef std::function<void(Event&, EventData*)> functor;
+
 	private:
-		typedef std::function<void(const Event&, EventData*)> functor;
 		EventData(unsigned _eventType, functor _executor) : eventType(_eventType), executor(_executor)
 		{}
 

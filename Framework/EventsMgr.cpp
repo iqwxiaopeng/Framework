@@ -28,7 +28,7 @@ EventData* EventsMgr::registerEvent(unsigned eventType, functor fptr)
 }
 
 
-void EventsMgr::propagateEvent(const Event &e)
+void EventsMgr::propagateEvent(Event &e)
 {
 	// Iterate through all pointers for event and call them
 	if(funcs.size() > (unsigned)e.type)
